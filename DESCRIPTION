@@ -1,0 +1,18 @@
+Package: promote
+Type: Package
+Title: R client for the Alteryx Promote API
+Version: 0.1.0
+Date: 2017-10-28
+Author: Paul E. Promote <promotedev@alteryx.com>
+Maintainer: Paul E. Promote <promotedev@alteryx.com>
+Description: Deploy, maintain, and invoke models via the Promote
+    REST API.
+Depends:
+    R (>= 3.2.0)
+URL: https://github.com/alteryx/promote-r-client
+Imports:
+    httr,
+    jsonlite,
+    stringr,
+License: FreeBSD
+RoxygenNote: 6.0.1

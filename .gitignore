@@ -1,0 +1,10 @@
+.Rproj.user
+.Rproj
+.Rhistory
+.RData
+..Rcheck/*
+man/..Rcheck/*
+.Rcheck/*
+*.tar.gz
+*.swp
+promote.Rcheck/
