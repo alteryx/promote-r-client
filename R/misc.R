@@ -21,10 +21,10 @@ confirm.deployment <- function() {
   needsConfirm <- TRUE
   while (needsConfirm) {
       sure <- readline("Are you sure you want to deploy? y/n ")
-      if (sure == "n" || sure == "N") {
+      if (tolower(sure) == "n") {
         needsConfirm <- FALSE
         stop("Deployment cancelled")
-      } else if (sure == "y" || sure == "Y") {
+      } else if (tolower(sure) == "y") {
         needsConfirm <- FALSE
       }
     }
