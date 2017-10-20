@@ -3,7 +3,7 @@
 \name{add.dependency}
 \alias{add.dependency}
 \title{Private function that adds a package to the list of dependencies
-that will be installed on the ScienceOps server}
+that will be installed on the Promote server}
 \usage{
 add.dependency(name, importName, src, version, install)
 }
@@ -21,5 +21,5 @@ this may be different from the name used to install it)}
 }
 \description{
 Private function that adds a package to the list of dependencies
-that will be installed on the ScienceOps server
+that will be installed on the Promote server
 }

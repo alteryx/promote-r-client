@@ -4,13 +4,10 @@
 \alias{promote.deploy}
 \title{Deploy a model to promote's servers}
 \usage{
-promote.deploy(model_name, packages = c(), confirm = TRUE,
-  custom_image = NULL)
+promote.deploy(model_name, confirm = TRUE, custom_image = NULL)
 }
 \arguments{
 \item{model_name}{name of your model}
-
-\item{packages}{list of packages to install using apt-get}
 
 \item{confirm}{boolean indicating whether to prompt before deploying}
 
@@ -30,16 +27,14 @@ promote.config <- c(
 iris$Sepal.Width_sq <- iris$Sepal.Width^2
 fit <- glm(I(Species)=="virginica" ~ ., data=iris)
 
-model.require <- function() {
- # require("randomForest")
-}
+promote.library("randomForest")
 
 model.predict <- function(df) {
  data.frame("prediction"=predict(fit, df, type="response"))
 }
 \dontrun{
 promote.deploy("irisModel")
-promote.deploy("irisModelCustomImage", custom_image="myImage:latest")
+promote.deploy("irisModelCustomImage")
 }
 }
 \keyword{deploy}

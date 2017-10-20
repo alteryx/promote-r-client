@@ -10,3 +10,4 @@ README.md
 \.Rhistory
 \.DS_Store
 .*\.tar\.gz
+^examples$

@@ -11,15 +11,15 @@ promote.library(name, src = "CRAN", version = NULL, user = NULL,
 \arguments{
 \item{name}{name of the package to be added}
 
-\item{src}{source from which the package will be installed on ScienceOps (github or CRAN)}
+\item{src}{source from which the package will be installed on Promote (github or CRAN)}
 
 \item{version}{version of the package to be added}
 
 \item{user}{Github username associated with the package}
 
 \item{install}{Whether the package should also be installed into the model on the
-ScienceOps server; this is typically set to False when the package has already been
-added to the ScienceOps base image.}
+Promote server; this is typically set to False when the package has already been
+added to the Promote base image.}
 }
 \description{
 Import one or more libraries and add them to the promote model's
