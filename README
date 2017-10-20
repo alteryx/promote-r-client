@@ -23,7 +23,5 @@ promote.config  <- c(
   env = "PROMOTE_URL"
 )
 
-promote.deploy("HelloWorld_PromoteTest", confirm = FALSE)
+promote.deploy("HelloWorld", confirm = FALSE)
 ```
-
-For documentation see: http://docs.yhathq.com/r/
