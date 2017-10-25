@@ -222,12 +222,11 @@ promote.unload <- function(name) {
 #' iris$Sepal.Width_sq <- iris$Sepal.Width^2
 #' fit <- glm(I(Species)=="virginica" ~ ., data=iris)
 #'
-#' promote.library("randomForest")
-#'
 #' model.predict <- function(df) {
 #'  data.frame("prediction"=predict(fit, df, type="response"))
 #' }
 #' \dontrun{
+#' promote.library("randomForest")
 #' promote.deploy("irisModel")
 #' promote.deploy("irisModelCustomImage")
 #' }
