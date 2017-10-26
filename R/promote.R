@@ -271,7 +271,7 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
     all_funcs <- all_objects[lapply(all_objects, function(name){
       class(globalenv()[[name]])
     }) == "function"]
-    all_objects <- c("model.require", all_objects)
+    all_objects <- c("promote.require", all_objects)
 
     save(list=all_objects, envir = deployEnv, file = image_file)
     cat("objects detected\n")
