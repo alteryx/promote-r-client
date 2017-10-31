@@ -4,7 +4,8 @@ INSPIRATIONS
 ^.*\.Rproj$
 ^\.Rproj\.user$
 \.git
-yhatr.Rproj
+promote.Rproj
+howtorelease.r
 README.md
 \.Rproj.user
 \.Rhistory

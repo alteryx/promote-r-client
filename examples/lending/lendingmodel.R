@@ -94,6 +94,17 @@ model.predict <- function(df) {
   output
 }
 
+# test the model locally with some sample JSON
+TESTDATA <- jsonlite::fromJSON('{"loan_amnt": 54000,
+  "home_ownership": "RENT",
+"annual_inc": 400000,
+"inq_last_6mths": 0,
+"last_fico_range_high": 800,
+"last_fico_range_low": 700
+}')
+
+model.predict(TESTDATA)
+
 promote.config <- c(
   username="colin",
   apikey="d325fc5bcb83fc197ee01edb58b4b396",
