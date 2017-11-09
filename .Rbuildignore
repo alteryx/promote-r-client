@@ -5,6 +5,7 @@ INSPIRATIONS
 ^\.Rproj\.user$
 \.git
 promote.Rproj
+local_test.sh
 howtorelease.r
 README.md
 \.Rproj.user
@@ -12,3 +13,4 @@ README.md
 \.DS_Store
 .*\.tar\.gz
 ^examples$
+^tests$
