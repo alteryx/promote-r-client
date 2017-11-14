@@ -6,7 +6,7 @@ promote <- new.env(parent = emptyenv())
 promote$dependencies <- data.frame()
 
 # Private function for storing requirements that will be imported on
-# the ScienceOps server
+# the Promote server
 promote$model.require <- function() {
 }
 
@@ -19,7 +19,6 @@ promote$model.require <- function() {
 #' @param raw_input when true, incoming data will NOT be coerced into data.frame
 #' @param silent should output of url to console (via \code{promote.post})
 #' be silenced? Default is \code{FALSE}.
-#' @param bulk should the bulk api be used Default is \code{FALSE}.
 #'
 #' @export
 #' @examples
@@ -30,7 +29,7 @@ promote$model.require <- function() {
 #' \dontrun{
 #' promote.predict_raw("irisModel", iris)
 #' }
-promote.predict_raw <- function(model_name, data, model_owner, raw_input = FALSE, silent = TRUE, bulk = FALSE) {
+promote.predict_raw <- function(model_name, data, model_owner, raw_input = FALSE, silent = TRUE) {
   usage <- "usage:  promote.predict(<model_name>,<data>)"
   if(missing(model_name)){
     stop(paste("Please specify the model name you'd like to call",usage,sep="\n"))
@@ -58,23 +57,20 @@ promote.predict_raw <- function(model_name, data, model_owner, raw_input = FALSE
   url <- stringr::str_replace_all(url, "^https?://", "")
   url <- stringr::str_replace_all(url, "/$", "")
   if (usetls) {
-    model_url <- sprintf("https://%s/model/%s/", url, model_name)
+    model_url <- sprintf("https://%s/model/%s/predict", url, model_name)
   } else {
-    model_url <- sprintf("http://%s/model/%s/", url, model_name)
+    model_url <- sprintf("http://%s/model/%s/predict", url, model_name)
   }
   query <- list()
-  if (raw_input==TRUE) {
+  if (raw_input == TRUE) {
     query[["raw_input"]] <- "true"
-  }
-  if (bulk==TRUE) {
-    query[["bulk"]] <- "true"
   }
 
   error_msg <- paste("Invalid response: are you sure your model is built?\nHead over to",
-                     model_url,"to see you model's current status.")
+                     model_url, "to see you model's current status.")
   tryCatch(
     {
-      rsp <- promote.post(endpoint, query = query, data = data, silent = silent, bulk = bulk)
+      rsp <- promote.post(endpoint, query = query, data = data, silent = silent)
       httr::content(rsp)
     },
     error = function(e){
@@ -113,7 +109,7 @@ promote.predict_raw <- function(model_name, data, model_owner, raw_input = FALSE
 promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, silent = TRUE) {
   raw_rsp <- promote.predict_raw(model_name, data, model_owner, raw_input = raw_input, silent = silent)
   tryCatch({
-    if (raw_input==TRUE) {
+    if (raw_input == TRUE) {
       raw_rsp
     } else if ("result" %in% names(raw_rsp)) {
       data.frame(lapply(raw_rsp$result, unlist))
@@ -133,12 +129,12 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' dependency list
 #'
 #' @param name name of the package to be added
-#' @param src source from which the package will be installed on ScienceOps (github or CRAN)
+#' @param src source from which the package will be installed on Promote (github or CRAN)
 #' @param version version of the package to be added
 #' @param user Github username associated with the package
 #' @param install Whether the package should also be installed into the model on the
-#' ScienceOps server; this is typically set to False when the package has already been
-#' added to the ScienceOps base image.
+#' Promote server; this is typically set to False when the package has already been
+#' added to the Promote base image.
 #' @keywords import
 #' @export
 #' @examples
@@ -213,7 +209,6 @@ promote.unload <- function(name) {
 #' via promote's REST API (see \code{\link{promote.predict}}).
 #'
 #' @param model_name name of your model
-#' @param packages list of packages to install using apt-get
 #' @param confirm boolean indicating whether to prompt before deploying
 #' @param custom_image name of the image you'd like your model to use
 #' @keywords deploy
@@ -227,23 +222,20 @@ promote.unload <- function(name) {
 #' iris$Sepal.Width_sq <- iris$Sepal.Width^2
 #' fit <- glm(I(Species)=="virginica" ~ ., data=iris)
 #'
-#' model.require <- function() {
-#'  # require("randomForest")
-#' }
-#'
 #' model.predict <- function(df) {
 #'  data.frame("prediction"=predict(fit, df, type="response"))
 #' }
 #' \dontrun{
+#' promote.library("randomForest")
 #' promote.deploy("irisModel")
-#' promote.deploy("irisModelCustomImage", custom_image="myImage:latest")
+#' promote.deploy("irisModelCustomImage")
 #' }
-promote.deploy <- function(model_name, packages=c(), confirm=TRUE, custom_image=NULL) {
+promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
   if(missing(model_name)){
     stop("Please specify 'model_name' argument")
   }
-  if (length(grep("^[A-Za-z_0-9]+$", model_name))==0) {
-    stop("Model name can only contain following characters: A-Za-z_0-9")
+  if (length(grep("^[A-Za-z0-9]+$", model_name))==0) {
+    stop("Model name can only contain following characters: A-Za-z0-9")
   }
   img.size.mb <- check.image.size()
   AUTH <- get("promote.config")
@@ -261,12 +253,10 @@ promote.deploy <- function(model_name, packages=c(), confirm=TRUE, custom_image=
     env <- stringr::str_replace_all(env, "^https?://", "")
     env <- stringr::str_replace_all(env, "/$", "")
     AUTH <- AUTH[!names(AUTH)=="env"]
-    query <- AUTH
-    query <- paste(names(query), query, collapse="&", sep="=")
     if (usetls) {
-      url <- sprintf("https://%s/deployer/model?%s", env, query)
+      url <- sprintf("https://%s/api/deploy/R", env)
     } else {
-      url <- sprintf("http://%s/deployer/model?%s", env, query)
+      url <- sprintf("http://%s/api/deploy/R", env)
     }
     image_file <- tempfile(pattern="scienceops_deployment")
 
@@ -283,14 +273,14 @@ promote.deploy <- function(model_name, packages=c(), confirm=TRUE, custom_image=
     }) == "function"]
     all_objects <- c("model.require", all_objects)
 
-    save(list=all_objects, envir=deployEnv, file=image_file)
+    save(list=all_objects, envir = deployEnv, file = image_file)
     cat("objects detected\n")
 
     sizes <- lapply(all_objects, function(name) {
-      format( object.size(globalenv()[[name]]) , units="auto")
+      format( object.size(globalenv()[[name]]) , units = "auto")
     })
     sizes <- unlist(sizes)
-    print(data.frame(name=all_objects, size=sizes))
+    print(data.frame(name = all_objects, size = sizes))
     cat("\n")
 
     if (confirm && interactive()) {
@@ -299,7 +289,7 @@ promote.deploy <- function(model_name, packages=c(), confirm=TRUE, custom_image=
 
     dependencies <- promote$dependencies[promote$dependencies$install,]
 
-    err.msg <- paste("Could not connect to ScienceOps. Please ensure that your",
+    err.msg <- paste("Could not connect to Promote. Please ensure that your",
                      "specified server is online. Contact info [at] promotehq [dot] com",
                      "for further support.",
                      "-----------------------",
@@ -307,13 +297,12 @@ promote.deploy <- function(model_name, packages=c(), confirm=TRUE, custom_image=
                      env,
                      sep="\n")
     rsp <- httr::POST(url, httr::authenticate(AUTH[["username"]], AUTH[["apikey"]], 'basic'),
-      body=list(
-      "model_image" = httr::upload_file(image_file),
-      "modelname" = model_name,
-      "packages" = jsonlite::toJSON(dependencies),
-      "apt_packages" = packages,
-		  "code" = capture.src(all_funcs),
-      "custom_image" = custom_image
+      body = list(
+        "model_image" = httr::upload_file(image_file),
+        "modelname" = model_name,
+        "packages" = jsonlite::toJSON(dependencies),
+        "code" = capture.src(all_funcs),
+        "custom_image" = custom_image
       )
     )
     body <- httr::content(rsp)
@@ -329,5 +318,3 @@ promote.deploy <- function(model_name, packages=c(), confirm=TRUE, custom_image=
     message("Please specify 'env' parameter in promote.config.")
   }
 }
-
-

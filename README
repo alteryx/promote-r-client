@@ -1,2 +1,27 @@
-# promote
-For documentation see: http://docs.yhathq.com/r/
+## promote
+
+## Installation
+
+```r
+install.packages("promote")
+```
+
+## Usage
+
+```r
+library(promote)
+
+model.predict <- function(request) {
+  me <- request$name
+  greeting <- paste0("Hello", me, "!")
+  greeting
+}
+
+promote.config  <- c(
+  username = "YOUR_USERNAME",
+  apikey = "YOUR_API_KEY",
+  env = "PROMOTE_URL"
+)
+
+promote.deploy("HelloWorld", confirm = FALSE)
+```

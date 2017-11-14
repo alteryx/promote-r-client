@@ -1,5 +1,5 @@
 #' Private function that adds a package to the list of dependencies
-#' that will be installed on the ScienceOps server
+#' that will be installed on the Promote server
 #' @param name name of the package to be installed
 #' @param importName name under which the package is imported (for a github package,
 #' this may be different from the name used to install it)
@@ -10,7 +10,7 @@ add.dependency <- function(name, importName, src, version, install) {
   # Don't add the dependency if it's already there
   dependencies <- promote$dependencies
   if (!any(dependencies$name == name)) {
-    newRow <- data.frame(name=name, importName=importName, src=src, version=version, install=install)
+    newRow <- data.frame(name = name, importName = importName, src = src, version = version, install = install)
     dependencies <- rbind(dependencies, newRow)
     promote$dependencies <- dependencies
   }
@@ -26,5 +26,4 @@ set.model.require <- function() {
     }
   }
 }
-
 

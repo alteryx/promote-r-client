@@ -6,7 +6,7 @@
 and associated metadata.}
 \usage{
 promote.predict_raw(model_name, data, model_owner, raw_input = FALSE,
-  silent = TRUE, bulk = FALSE)
+  silent = TRUE)
 }
 \arguments{
 \item{model_name}{the name of the model you want to call}
@@ -19,8 +19,6 @@ promote.predict_raw(model_name, data, model_owner, raw_input = FALSE,
 
 \item{silent}{should output of url to console (via \code{promote.post})
 be silenced? Default is \code{FALSE}.}
-
-\item{bulk}{should the bulk api be used Default is \code{FALSE}.}
 }
 \description{
 Calls promote's REST API and returns a JSON document containing both the prediction
