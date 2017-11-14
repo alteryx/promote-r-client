@@ -1,8 +1,8 @@
 Package: promote
 Type: Package
 Title: R client for the Alteryx Promote API
-Version: 0.1.1
-Date: 2017-10-28
+Version: 1.0.0
+Date: 2017-11-14
 Author: Paul E. Promote <promotedev@alteryx.com>
 Maintainer: Paul E. Promote <promotedev@alteryx.com>
 Description: Deploy, maintain, and invoke models via the Promote
