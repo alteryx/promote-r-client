@@ -33,7 +33,6 @@ model.predict <- function(df) {
 \dontrun{
 promote.library("randomForest")
 promote.deploy("irisModel")
-promote.deploy("irisModelCustomImage")
 }
 }
 \keyword{deploy}
