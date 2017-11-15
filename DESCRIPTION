@@ -1,12 +1,13 @@
 Package: promote
 Type: Package
-Title: R Client for the Alteryx Promote API
+Title: Client for the 'Alteryx Promote' API
 Version: 1.0.0
 Date: 2017-11-14
 Author: Paul E. Promote <promotedev@alteryx.com>
 Maintainer: Paul E. Promote <promotedev@alteryx.com>
-Description: Deploy, maintain, and invoke models via the Promote
-    REST API.
+Description: Deploy, maintain, and invoke predictive models using the 'Alteryx
+     Promote' REST API.  'Alteryx Promote' is available at the URL below:
+    <https://www.alteryx.com/products/alteryx-promote>
 Depends:
     R (>= 3.2.0)
 URL: https://github.com/alteryx/promote-r-client
