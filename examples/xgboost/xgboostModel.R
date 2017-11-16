@@ -23,10 +23,10 @@ testcase <- toJSON(as.matrix(test$data[1:3,]), matrix = "columnmajor")
 # test locally
 model.predict(fromJSON(testcase))
 
-promote.config  <- c(
+promote.config <- c(
   username="colin",
-  apikey="d325fc5bcb83fc197ee01edb58b4b396",
-  env="https://sandbox.c.yhat.com/"
+  apikey="f5e0de3c-2bf2-4fa2-a761-996dc7cb1ddf",
+  env="http://promote.x.yhat.com/"
 )
 
 promote.library('xgboost')

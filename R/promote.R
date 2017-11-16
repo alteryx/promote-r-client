@@ -44,7 +44,7 @@ promote.predict_raw <- function(model_name, data, model_owner, raw_input = FALSE
     if (!missing(model_owner)){
       user <- model_owner
     }
-    endpoint <- sprintf("%s/models/%s/", user, model_name)
+    endpoint <- sprintf("%s/models/%s/predict", user, model_name)
   } else {
     stop("Please specify an env in promote.config")
   }
@@ -58,9 +58,9 @@ promote.predict_raw <- function(model_name, data, model_owner, raw_input = FALSE
   url <- stringr::str_replace_all(url, "^https?://", "")
   url <- stringr::str_replace_all(url, "/$", "")
   if (usetls) {
-    model_url <- sprintf("https://%s/model/%s/predict", url, model_name)
+    model_url <- sprintf("https://%s/model/%s", url, model_name)
   } else {
-    model_url <- sprintf("http://%s/model/%s/predict", url, model_name)
+    model_url <- sprintf("http://%s/model/%s", url, model_name)
   }
   query <- list()
   if (raw_input == TRUE) {

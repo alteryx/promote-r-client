@@ -107,8 +107,8 @@ model.predict(TESTDATA)
 
 promote.config <- c(
   username="colin",
-  apikey="d325fc5bcb83fc197ee01edb58b4b396",
-  env="https://sandbox.c.yhat.com/"
+  apikey="f5e0de3c-2bf2-4fa2-a761-996dc7cb1ddf",
+  env="http://promote.x.yhat.com/"
 )
 
 
