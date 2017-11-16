@@ -5,8 +5,9 @@ INSPIRATIONS
 ^\.Rproj\.user$
 \.git
 promote.Rproj
-local_test.sh
+local_test_package.sh
 howtorelease.r
+.promote_creds
 README.md
 \.Rproj.user
 \.Rhistory

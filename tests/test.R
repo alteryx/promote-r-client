@@ -1,4 +1,7 @@
 library(devtools)
+devtools::install_github("gaborcsardi/dotenv")
+library(dotenv)
+
 library(promote)
 
 model.predict <- function(request) {
@@ -7,11 +10,10 @@ model.predict <- function(request) {
   greeting
 }
 
-
 promote.config  <- c(
-  username="colin",
-  apikey="d325fc5bcb83fc197ee01edb58b4b396",
-  env="https://sandbox.c.yhat.com/"
+  username = Sys.getenv("PROMOTE_USERNAME"),
+  apikey = Sys.getenv("PROMOTE_APIKEY"),
+  env = Sys.getenv("PROMOTE_URL")
 )
 
-promote.deploy("HelloWorld2",confirm = FALSE)
+promote.deploy("HelloWorld2", confirm = FALSE)

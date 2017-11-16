@@ -10,7 +10,8 @@ devtools::check_man()
 # devtools::release_checks()
 
 # build the package
-f <- devtools::build()
+devtools::build(binary = TRUE)
+# f <- devtools::build()
 
 # install
 # devtools::install_local(f)
