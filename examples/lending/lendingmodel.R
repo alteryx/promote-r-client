@@ -4,6 +4,7 @@ library(lubridate)
 library(randomForest)
 library(reshape2)
 library(ggplot2)
+library(dotenv)
 
 file <- "./LoanStats3a.csv"
 df <- read.csv(file, h=T, stringsAsFactors=F, skip=1)
@@ -105,10 +106,10 @@ TESTDATA <- jsonlite::fromJSON('{"loan_amnt": 54000,
 
 model.predict(TESTDATA)
 
-promote.config <- c(
-  username="colin",
-  apikey="f5e0de3c-2bf2-4fa2-a761-996dc7cb1ddf",
-  env="http://promote.x.yhat.com/"
+promote.config  <- c(
+  username = Sys.getenv("PROMOTE_USERNAME"),
+  apikey = Sys.getenv("PROMOTE_APIKEY"),
+  env = Sys.getenv("PROMOTE_URL")
 )
 
 
