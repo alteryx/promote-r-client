@@ -7,7 +7,6 @@ INSPIRATIONS
 promote.Rproj
 local_test_package.sh
 howtorelease.r
-.promote_creds
 README.md
 \.Rproj.user
 \.Rhistory
