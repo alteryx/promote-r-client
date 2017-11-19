@@ -1,5 +1,5 @@
 library(devtools)
-devtools::install_github("gaborcsardi/dotenv")
+# devtools::install_github("gaborcsardi/dotenv")
 library(dotenv)
 
 library(promote)
@@ -16,4 +16,7 @@ promote.config  <- c(
   env = Sys.getenv("PROMOTE_URL")
 )
 
-promote.deploy("HelloWorld2", confirm = FALSE)
+promote.deploy("HelloWorldTest", confirm = FALSE)
+TESTDATA <- c("name":"colin")
+
+promote.predict("HelloWorldTest", TESTDATA)

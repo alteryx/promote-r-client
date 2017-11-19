@@ -1,1 +1,2 @@
-Rscript ./test.R
+Rscript ./helloworld.R
+Rscript ./lendingmodel.R
