@@ -287,10 +287,28 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
       confirm.deployment()
     }
 
+    # zip or tar the image file based on the OS
+    sysName <- Sys.info()["sysname"]
+    zip <- ""
+    if (sysName == "Darwin" || sysName == "Linux") {
+      bundle_name <- "objects.tar.gz"
+      filenames <- c("image_file")
+      filenames.fmt <- paste(filenames, collapse=" ")
+      cmd <- sprintf("/usr/bin/tar -czvf %s %s", bundle_name, filenames.fmt)
+      system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
+    } else if (sysName == "Windows") {
+      bundle_name <- "objects.zip"
+      zip(bundle_name, c("image_file"))
+      zip <- "true"
+    } else {
+      bundle_name <- "objects.tar.gz"
+      tar(bundle_name, c("image_file"), compression = 'gzip', tar='tar')
+    }
+
     dependencies <- promote$dependencies[promote$dependencies$install,]
 
     err.msg <- paste("Could not connect to Promote. Please ensure that your",
-                     "specified server is online. Contact info [at] promotehq [dot] com",
+                     "specified server is online. Contact support [at] alteryx [dot] com",
                      "for further support.",
                      "-----------------------",
                      "Specified endpoint:",
@@ -298,11 +316,12 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
                      sep="\n")
     rsp <- httr::POST(url, httr::authenticate(AUTH[["username"]], AUTH[["apikey"]], 'basic'),
       body = list(
-        "model_image" = httr::upload_file(image_file),
+        "model_image" = httr::upload_file(bundle_name),
         "modelname" = model_name,
         "packages" = jsonlite::toJSON(dependencies),
         "code" = capture.src(all_funcs),
-        "custom_image" = custom_image
+        "custom_image" = custom_image,
+        "zip" = zip
       )
     )
     body <- httr::content(rsp)
