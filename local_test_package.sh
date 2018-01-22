@@ -3,7 +3,7 @@ PARENT="$(pwd)"
 
 cd ../
 
-R CMD install ./promote_*.tar.gz
+R CMD install ./promote_*.tgz
 
 cd $PARENT
-Rscript tests/test.R
+./tests/run_tests.sh
