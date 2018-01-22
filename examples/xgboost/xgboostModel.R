@@ -1,6 +1,7 @@
 library(xgboost)
 library(promote)
 library(jsonlite)
+library(dotenv)
 
 data(agaricus.train, package='xgboost')
 data(agaricus.test, package='xgboost')
@@ -15,21 +16,21 @@ xb <- xgboost(data = as.matrix(train$data), label = train$label,
 model.predict <- function(matrix) {
   m <- as.matrix(as.data.frame(lapply(matrix, as.numeric)))
   # m <- Matrix(matrix)
-  list(predict(xb, newdata=m))
+  list(predict(xb, newdata = m))
 }
 
-testcase <- toJSON(as.matrix(test$data[1:3,]), matrix = "columnmajor")
+testcase <- jsonlite::toJSON(as.matrix(test$data[1:3,]), matrix = "columnmajor")
 
 # test locally
-model.predict(fromJSON(testcase))
+model.predict(jsonlite::fromJSON(testcase))
 
 promote.config  <- c(
-  username="colin",
-  apikey="d325fc5bcb83fc197ee01edb58b4b396",
-  env="https://sandbox.c.yhat.com/"
+  username = Sys.getenv("PROMOTE_USERNAME"),
+  apikey = Sys.getenv("PROMOTE_APIKEY"),
+  env = Sys.getenv("PROMOTE_URL")
 )
 
-promote.library('xgboost')
-promote.library('Matrix')
+promote.library("xgboost")
+promote.library("Matrix")
 
-promote.deploy("xgboosttest",confirm = FALSE)
+promote.deploy("xgboosttest", confirm = FALSE)

@@ -1,15 +1,21 @@
+#install.packages('promote')
 library(promote)
+library(jsonlite)
 
 model.predict <- function(request) {
   me <- request$name
-  greeting <- paste0("Hello", me, "!")
+  greeting <- paste0("Hello ", me, "!")
   greeting
 }
 
+# test you model locally
+TESTDATA <- jsonlite::fromJSON('{"name": "colin"}')
+model.predict(TESTDATA)
+
 promote.config  <- c(
-  username = "colin",
-  apikey = "d325fc5bcb83fc197ee01edb58b4b396",
-  env = "https://sandbox.c.yhat.com"
+  username = "your_username",
+  apikey = "your_APIKEY",
+  env = "https://promote_url.com"
 )
 
-promote.deploy("HelloWorld_PromoteTest", confirm = FALSE)
+promote.deploy("HelloWorld", confirm = FALSE)

@@ -6,7 +6,7 @@ library(reshape2)
 library(ggplot2)
 library(dotenv)
 
-file <- "./LoanStats3a.csv"
+file <- "../examples/LoanStats3a.csv"
 df <- read.csv(file, h=T, stringsAsFactors=F, skip=1)
 df.head <- head(df, 100)
 
@@ -112,5 +112,6 @@ promote.config  <- c(
   env = Sys.getenv("PROMOTE_URL")
 )
 
-
 promote.deploy("CreditRiskLendingGLM", confirm = FALSE)
+
+promote.predict("CreditRiskLendingGLM", TESTDATA)

@@ -27,7 +27,8 @@ and associated metadata.
 \examples{
 promote.config <- c(
  username = "your username",
- apikey = "your apikey"
+ apikey = "your apikey",
+ env="http://ip_of_alteryx_promote.com"
 )
 \dontrun{
 promote.predict_raw("irisModel", iris)
