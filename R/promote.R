@@ -258,7 +258,13 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
     } else {
       url <- sprintf("http://%s/api/deploy/R", env)
     }
-    image_file <- tempfile(pattern="scienceops_deployment")
+    # image_file <- tempfile(pattern="promote_deployment")
+    image_file <- "promote_deployment"
+
+    # check for a promote_deployment file
+    if (file.exists(image_file)) {
+      unlink(image_file)
+    }
 
     all_objects <- promote.ls()
     # Consolidate local environment with global one
@@ -290,19 +296,18 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
     # zip or tar the image file based on the OS
     sysName <- Sys.info()["sysname"]
     zip <- ""
+    objName <- "objects.tar.gz"
     if (sysName == "Darwin" || sysName == "Linux") {
-      bundle_name <- "objects.tar.gz"
-      filenames <- c("image_file")
-      filenames.fmt <- paste(filenames, collapse=" ")
-      cmd <- sprintf("/usr/bin/tar -czvf %s %s", bundle_name, filenames.fmt)
+      # filenames <- c(image_file)
+      # filenames.fmt <- paste(filenames, collapse=" ")
+      cmd <- sprintf("/usr/bin/tar -czvf %s %s", objName, image_file)
       system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
     } else if (sysName == "Windows") {
-      bundle_name <- "objects.zip"
-      zip(bundle_name, c("image_file"))
+      objName <- "objects.zip"
+      zip(objName, image_file)
       zip <- "true"
     } else {
-      bundle_name <- "objects.tar.gz"
-      tar(bundle_name, c("image_file"), compression = 'gzip', tar='tar')
+      tar(objName, image_file, compression = 'gzip', tar='tar')
     }
 
     dependencies <- promote$dependencies[promote$dependencies$install,]
@@ -327,10 +332,12 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
     body <- httr::content(rsp)
     if (rsp$status_code != 200) {
       unlink(image_file)
+      unlink(objName)
       stop("deployment error: ", body)
     }
     rsp.df <- data.frame(body)
     unlink(image_file)
+    unlink(objName)
     cat("deployment successful\n")
     rsp.df
   } else {
