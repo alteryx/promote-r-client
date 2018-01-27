@@ -8,3 +8,4 @@ man/..Rcheck/*
 *.tar.gz
 *.swp
 promote.Rcheck/
+*.DS_Store

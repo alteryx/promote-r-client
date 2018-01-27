@@ -11,6 +11,7 @@ devtools::check()
 
 # build the package
 f <- devtools::build()
+devtools::build(binary = FALSE)
 
 # install
 devtools::install_local(f)

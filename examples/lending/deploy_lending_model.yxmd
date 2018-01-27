@@ -1,0 +1,667 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="11.7">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="66" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>2</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>LoanStats3a.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="member_id" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="loan_amnt" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="funded_amnt" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="funded_amnt_inv" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="term" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="apr" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="int_rate" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="installment" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="grade" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="sub_grade" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="emp_name" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="emp_length" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="home_ownership" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="annual_inc" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="is_inc_v" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="accept_d" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="exp_d" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="list_d" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="issue_d" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="loan_status" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="pymnt_plan" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="url" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="desc" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="purpose" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="title" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="addr_city" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="addr_state" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="acc_now_delinq" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="acc_open_past_24mths" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="bc_open_to_buy" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="percent_bc_gt_75" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="bc_util" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="dti" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="delinq_2yrs" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="delinq_amnt" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="earliest_cr_line" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="fico_range_low" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="fico_range_high" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="inq_last_6mths" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_last_delinq" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_last_record" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_recent_inq" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_recent_loan_delinq" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_recent_revol_delinq" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_recent_bc" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mort_acc" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="open_acc" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="pub_rec_gt_100" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="pub_rec" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_bal_ex_mort" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="revol_bal" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="revol_util" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_bc_limit" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_acc" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="initial_list_status" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="out_prncp" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="out_prncp_inv" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_pymnt" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_pymnt_inv" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_rec_prncp" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_rec_int" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_rec_late_fee" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="last_pymnt_d" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="last_pymnt_amnt" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="next_pymnt_d" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="last_credit_pull_d" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="last_fico_range_high" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="last_fico_range_low" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_il_high_credit_limit" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_oldest_il_open" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_rev_accts" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_recent_bc_dlq" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="pub_rec_bankruptcies" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_accts_ever_120_pd" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="chargeoff_within_12_mths" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="collections_12_mths_ex_med" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="tax_liens" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mths_since_last_major_derog" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_sats" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_tl_op_past_12m" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mo_sin_rcnt_tl" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="tot_hi_cred_lim" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="tot_cur_bal" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="avg_cur_bal" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_bc_tl" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_actv_bc_tl" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_bc_sats" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="pct_tl_nvr_dlq" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_tl_90g_dpd_24m" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_tl_30dpd" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_tl_120dpd_2m" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_il_tl" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mo_sin_old_il_acct" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_actv_rev_tl" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mo_sin_old_rev_tl_op" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="mo_sin_rcnt_rev_tl_op" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_rev_hi_lim" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_rev_tl_bal_gt_0" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="num_op_rev_tl" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="tot_coll_amt" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="policy_code" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxRPluginGui.R">
+        <Position x="354" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <RScript><![CDATA[df <- read.Alteryx("#1", mode="data.frame")
+df2 <- read.Alteryx("#2", mode="data.frame")
+
+df[,'desc'] <- NULL
+df[,'mths_since_last_record'] <- NULL
+
+library(stringr)
+library(plyr)
+library(lubridate)
+library(reshape2)
+
+df.head <- head(df, 100)
+
+dim(df)
+
+# droping some columns
+df[,'desc'] <- NULL
+df[,'mths_since_last_record'] <- NULL
+
+#get rid of fields that are mainly NA
+poor_coverage <- sapply(df, function(x) {
+  coverage <- 1 - sum(is.na(x)) / length(x)
+  coverage < 0.8
+})
+df <- df[,poor_coverage==FALSE]
+
+##################
+
+bad_indicators <- c("Late (16-30 days)",
+                    "Late (31-120 days)",
+                    "Default",
+                    "Charged Off")
+
+df$is_bad <- ifelse(df$loan_status %in% bad_indicators, 1,
+                    ifelse(df$loan_status=="", NA,
+                           0))
+table(df$loan_status)
+table(df$is_bad)
+
+df$issue_d <- as.Date(df$issue_d)
+df$year_issued <- year(df$issue_d)
+df$month_issued <- month(df$issue_d)
+df$earliest_cr_line <- as.Date(df$earliest_cr_line)
+df$revol_util <- str_replace_all(df$revol_bal, "[%]", "")
+df$revol_util <- as.numeric(df$revol_bal)
+
+detach("package:lubridate", unload=TRUE)
+
+outcomes <- ddply(df, .(year_issued, month_issued), function(x) {
+  c("percent_bad"=sum(x$is_bad) / nrow(x),
+    "n_loans"=nrow(x))
+})
+
+###############################
+
+#figure out which columns are numeirc (and hence we can look at the distribution)
+numeric_cols <- sapply(df, is.numeric)
+#turn the data into long format (key->value esque)
+df.lng <- melt(df[,numeric_cols], id="is_bad")
+
+#plot the distribution for bads and goods for each variable
+# p <- ggplot(aes(x=value, group=is_bad, colour=factor(is_bad)), data=df.lng)
+#quick and dirty way to figure out if you have any good variables
+#p + geom_density() +
+#  facet_wrap(~variable, scales="free")
+
+#NOTES:
+# - be careful of using variables that get created AFTER a loan is issued
+#   (prinicpal/interest related)
+# - any ID variables that are numeric will be plotted as well. be sure to 
+#   ignore those as well.
+
+#################################
+
+# only evaluate w/ vintages that have come to term
+df.term <- subset(df, year_issued < 2012)
+df.term$home_ownership <- factor(df.term$home_ownership)
+df.term$is_rent <- df.term$home_ownership=="RENT"
+
+idx <- runif(nrow(df.term)) > 0.75
+train <- df.term[idx==FALSE,]
+test <- df.term[idx==TRUE,]
+
+# basic GLM
+my.glm <- glm(I(is_bad==TRUE) ~ last_fico_range_low + last_fico_range_high +  is_rent,
+              data=train, na.action=na.omit, family=binomial())
+
+my.glm$data <- NULL
+#summary(my.glm)
+
+# library(randomForest)
+# my.rf <- randomForest(is_bad==TRUE ~ last_fico_range_low + last_fico_range_high * is_rent,
+#                      data=train, na.action=na.omit)
+
+
+
+translateToScore <- function(df) {
+  # takes log odds and converts them to a traditional credit score
+  # between 300 and 850
+  baseline <- 600
+  baseline + predict(my.glm, newdata=df) * (40 / log(2))
+}
+
+library(promote)
+
+promote.library("plyr")
+promote.library("randomForest")
+
+# execute your code/model
+model.predict <- function(df) {
+  df$is_rent <- df$home_ownership=="RENT"
+  prediction <- predict(my.glm, newdata=df, type="response")
+  # prediction <- predict(my.rf, newdata=df, type="response")
+  
+  output <- data.frame(prob_default=prediction)
+  output$score <- translateToScore(df)
+  output$decline_code <- ifelse(output$prob_default > 0.3, 
+                                "Credit score too low", "")
+  
+  output
+}
+
+testdata <- jsonlite::fromJSON('{"last_fico_range_high": 550,
+                               "last_fico_range_low": 495,
+                               "revol_util": 20,
+                               "inq_last_6mths": 1,
+                               "home_ownership": "MORTGAGE",
+                               "annual_inc": 75000,
+                               "loan_amnt": 6000
+                               }')
+
+model.predict(testdata)
+
+promote.config <- c(
+  username=toString(df2$USERNAME),
+  apikey=toString(df2$APIKEY),
+  env=toString(df2$PROMOTE_URL)
+)
+print(promote.config)
+
+promote.deploy("LendingClubDesigner", confirm=FALSE)
+]]></RScript>
+          <UseFullUpdate value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxRPluginEngine.dll" EngineDllEntryPoint="AlteryxR" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AutoField.AutoField">
+        <Position x="162" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Fields>
+            <Field field="id" selected="True" />
+            <Field field="member_id" selected="True" />
+            <Field field="loan_amnt" selected="True" />
+            <Field field="funded_amnt" selected="True" />
+            <Field field="funded_amnt_inv" selected="True" />
+            <Field field="term" selected="True" />
+            <Field field="apr" selected="True" />
+            <Field field="int_rate" selected="True" />
+            <Field field="installment" selected="True" />
+            <Field field="grade" selected="True" />
+            <Field field="sub_grade" selected="True" />
+            <Field field="emp_name" selected="True" />
+            <Field field="emp_length" selected="True" />
+            <Field field="home_ownership" selected="True" />
+            <Field field="annual_inc" selected="True" />
+            <Field field="is_inc_v" selected="True" />
+            <Field field="accept_d" selected="True" />
+            <Field field="exp_d" selected="True" />
+            <Field field="list_d" selected="True" />
+            <Field field="issue_d" selected="True" />
+            <Field field="loan_status" selected="True" />
+            <Field field="pymnt_plan" selected="True" />
+            <Field field="url" selected="True" />
+            <Field field="desc" selected="True" />
+            <Field field="purpose" selected="True" />
+            <Field field="title" selected="True" />
+            <Field field="addr_city" selected="True" />
+            <Field field="addr_state" selected="True" />
+            <Field field="acc_now_delinq" selected="True" />
+            <Field field="acc_open_past_24mths" selected="True" />
+            <Field field="bc_open_to_buy" selected="True" />
+            <Field field="percent_bc_gt_75" selected="True" />
+            <Field field="bc_util" selected="True" />
+            <Field field="dti" selected="True" />
+            <Field field="delinq_2yrs" selected="True" />
+            <Field field="delinq_amnt" selected="True" />
+            <Field field="earliest_cr_line" selected="True" />
+            <Field field="fico_range_low" selected="True" />
+            <Field field="fico_range_high" selected="True" />
+            <Field field="inq_last_6mths" selected="True" />
+            <Field field="mths_since_last_delinq" selected="True" />
+            <Field field="mths_since_last_record" selected="True" />
+            <Field field="mths_since_recent_inq" selected="True" />
+            <Field field="mths_since_recent_loan_delinq" selected="True" />
+            <Field field="mths_since_recent_revol_delinq" selected="True" />
+            <Field field="mths_since_recent_bc" selected="True" />
+            <Field field="mort_acc" selected="True" />
+            <Field field="open_acc" selected="True" />
+            <Field field="pub_rec_gt_100" selected="True" />
+            <Field field="pub_rec" selected="True" />
+            <Field field="total_bal_ex_mort" selected="True" />
+            <Field field="revol_bal" selected="True" />
+            <Field field="revol_util" selected="True" />
+            <Field field="total_bc_limit" selected="True" />
+            <Field field="total_acc" selected="True" />
+            <Field field="initial_list_status" selected="True" />
+            <Field field="out_prncp" selected="True" />
+            <Field field="out_prncp_inv" selected="True" />
+            <Field field="total_pymnt" selected="True" />
+            <Field field="total_pymnt_inv" selected="True" />
+            <Field field="total_rec_prncp" selected="True" />
+            <Field field="total_rec_int" selected="True" />
+            <Field field="total_rec_late_fee" selected="True" />
+            <Field field="last_pymnt_d" selected="True" />
+            <Field field="last_pymnt_amnt" selected="True" />
+            <Field field="next_pymnt_d" selected="True" />
+            <Field field="last_credit_pull_d" selected="True" />
+            <Field field="last_fico_range_high" selected="True" />
+            <Field field="last_fico_range_low" selected="True" />
+            <Field field="total_il_high_credit_limit" selected="True" />
+            <Field field="mths_since_oldest_il_open" selected="True" />
+            <Field field="num_rev_accts" selected="True" />
+            <Field field="mths_since_recent_bc_dlq" selected="True" />
+            <Field field="pub_rec_bankruptcies" selected="True" />
+            <Field field="num_accts_ever_120_pd" selected="True" />
+            <Field field="chargeoff_within_12_mths" selected="True" />
+            <Field field="collections_12_mths_ex_med" selected="True" />
+            <Field field="tax_liens" selected="True" />
+            <Field field="mths_since_last_major_derog" selected="True" />
+            <Field field="num_sats" selected="True" />
+            <Field field="num_tl_op_past_12m" selected="True" />
+            <Field field="mo_sin_rcnt_tl" selected="True" />
+            <Field field="tot_hi_cred_lim" selected="True" />
+            <Field field="tot_cur_bal" selected="True" />
+            <Field field="avg_cur_bal" selected="True" />
+            <Field field="num_bc_tl" selected="True" />
+            <Field field="num_actv_bc_tl" selected="True" />
+            <Field field="num_bc_sats" selected="True" />
+            <Field field="pct_tl_nvr_dlq" selected="True" />
+            <Field field="num_tl_90g_dpd_24m" selected="True" />
+            <Field field="num_tl_30dpd" selected="True" />
+            <Field field="num_tl_120dpd_2m" selected="True" />
+            <Field field="num_il_tl" selected="True" />
+            <Field field="mo_sin_old_il_acct" selected="True" />
+            <Field field="num_actv_rev_tl" selected="True" />
+            <Field field="mo_sin_old_rev_tl_op" selected="True" />
+            <Field field="mo_sin_rcnt_rev_tl_op" selected="True" />
+            <Field field="total_rev_hi_lim" selected="True" />
+            <Field field="num_rev_tl_bal_gt_0" selected="True" />
+            <Field field="num_op_rev_tl" selected="True" />
+            <Field field="tot_coll_amt" selected="True" />
+            <Field field="policy_code" selected="True" />
+            <Field field="*Unknown" selected="True" />
+          </Fields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int32" />
+            <Field name="member_id" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int32" />
+            <Field name="loan_amnt" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int32" />
+            <Field name="funded_amnt" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int32" />
+            <Field name="funded_amnt_inv" size="18" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="term" size="10" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="apr" size="6" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="int_rate" size="7" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="installment" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="grade" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="sub_grade" size="2" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="emp_name" size="78" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="emp_length" size="9" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="home_ownership" size="8" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="annual_inc" size="9" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="is_inc_v" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Bool" />
+            <Field name="accept_d" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Date" />
+            <Field name="exp_d" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Date" />
+            <Field name="list_d" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Date" />
+            <Field name="issue_d" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Date" />
+            <Field name="loan_status" size="59" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="pymnt_plan" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="url" size="68" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="desc" size="254" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="purpose" size="18" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="title" size="81" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="addr_city" size="40" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="addr_state" size="2" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="acc_now_delinq" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="acc_open_past_24mths" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="bc_open_to_buy" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="percent_bc_gt_75" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="bc_util" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="dti" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="delinq_2yrs" size="2" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="delinq_amnt" size="4" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="earliest_cr_line" size="16" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="fico_range_low" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int16" />
+            <Field name="fico_range_high" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int16" />
+            <Field name="inq_last_6mths" size="2" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_last_delinq" size="3" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_last_record" size="3" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_recent_inq" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_recent_loan_delinq" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_recent_revol_delinq" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_recent_bc" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mort_acc" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="open_acc" size="2" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="pub_rec_gt_100" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="pub_rec" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="total_bal_ex_mort" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="revol_bal" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int32" />
+            <Field name="revol_util" size="6" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="total_bc_limit" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="total_acc" size="2" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="initial_list_status" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Bool" />
+            <Field name="out_prncp" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="out_prncp_inv" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="total_pymnt" size="18" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="V_String" />
+            <Field name="total_pymnt_inv" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="total_rec_prncp" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="total_rec_int" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="total_rec_late_fee" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="last_pymnt_d" size="10" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="last_pymnt_amnt" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Double" />
+            <Field name="next_pymnt_d" size="10" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="last_credit_pull_d" size="10" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="last_fico_range_high" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int16" />
+            <Field name="last_fico_range_low" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Int16" />
+            <Field name="total_il_high_credit_limit" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_oldest_il_open" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_rev_accts" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_recent_bc_dlq" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="pub_rec_bankruptcies" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_accts_ever_120_pd" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="chargeoff_within_12_mths" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="collections_12_mths_ex_med" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="tax_liens" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mths_since_last_major_derog" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_sats" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_tl_op_past_12m" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mo_sin_rcnt_tl" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="tot_hi_cred_lim" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="tot_cur_bal" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="avg_cur_bal" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_bc_tl" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_actv_bc_tl" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_bc_sats" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="pct_tl_nvr_dlq" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_tl_90g_dpd_24m" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_tl_30dpd" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_tl_120dpd_2m" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_il_tl" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mo_sin_old_il_acct" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_actv_rev_tl" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mo_sin_old_rev_tl_op" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="mo_sin_rcnt_rev_tl_op" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="total_rev_hi_lim" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_rev_tl_bal_gt_0" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="num_op_rev_tl" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="tot_coll_amt" size="1" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="String" />
+            <Field name="policy_code" source="File: Z:\workspace\alteryx\Smart-predictive\Promote\demos\lending-club\LoanStats3a.csv" type="Byte" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAutoField" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Tab.Tab">
+        <Position x="0" y="0" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="54" width="144.9206" height="128" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Promote Credentials</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="11">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+            <Position x="79" y="98" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="USERNAME" />
+                <Field name="APIKEY" />
+                <Field name="PROMOTE_URL" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>colin</c>
+                  <c>25b58a60-d246-4466-b354-80e20d71225e</c>
+                  <c>https://promote.c.yhat.com</c>
+                </r>
+              </Data>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="USERNAME" size="5" source="TextInput:" type="String" />
+                <Field name="APIKEY" size="36" source="TextInput:" type="String" />
+                <Field name="PROMOTE_URL" size="26" source="TextInput:" type="String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>deploy_lending_model</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+    <RuntimeProperties>
+      <Actions />
+      <Questions>
+        <Question>
+          <Type>Tab</Type>
+          <Description>Questions</Description>
+          <Name>Tab (5)</Name>
+          <ToolId value="5" />
+          <Questions />
+        </Question>
+      </Questions>
+      <ModuleType>Wizard</ModuleType>
+      <MacroCustomHelp value="False" />
+      <MacroDynamicOutputFields value="False" />
+      <MacroImageStd value="0" />
+      <MacroInputs />
+      <MacroOutputs />
+      <Wiz_CustomHelp value="False" />
+      <Wiz_CustomGraphic value="False" />
+      <Wiz_ShowOutput value="True" />
+      <Wiz_OpenOutputTools />
+      <Wiz_OutputMessage />
+      <Wiz_NoOutputFilesMessage />
+      <Wiz_ChainRunWizard />
+    </RuntimeProperties>
+  </Properties>
+</AlteryxDocument>

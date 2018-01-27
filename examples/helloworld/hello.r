@@ -7,9 +7,9 @@ model.predict <- function(request) {
 }
 
 promote.config  <- c(
-  username = "colin",
-  apikey = "d325fc5bcb83fc197ee01edb58b4b396",
-  env = "https://sandbox.c.yhat.com"
+  username = "USERNAME",
+  apikey = "APIKEY",
+  env = "PROMOTE_URL"
 )
 
-promote.deploy("HelloWorld_PromoteTest", confirm = FALSE)
+promote.deploy("HelloWorld", confirm = FALSE)
