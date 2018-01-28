@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="11.7">
+  <Nodes>
+    <Node ToolID="6">
+      <GuiSettings>
+        <Position x="306" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Model Name">IrisRandomForest</Value>
+          <Value name="Y Var">species</Value>
+          <Value name="X Vars">sepal_length + sepal_width + petal_length + petal_width</Value>
+          <Value name="Num Trees">500</Value>
+          <Value name="Custom Num Vars">False</Value>
+          <Value name="Num Vars">3</Value>
+          <Value name="model.size">False</Value>
+          <Value name="total.nodes">100</Value>
+          <Value name="max.depth">10</Value>
+          <Value name="node.size">5</Value>
+          <Value name="replace">True</Value>
+          <Value name="samp.rate">100</Value>
+          <Value name="inches">True</Value>
+          <Value name="in.w">5.50</Value>
+          <Value name="in.h">5.50</Value>
+          <Value name="centimeters">False</Value>
+          <Value name="cm.w">13.00</Value>
+          <Value name="cm.h">14.95</Value>
+          <Value name="graph.resolution">1x</Value>
+          <Value name="pointsize">10</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Predictive Tools\Forest_Model.yxmc" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="Deploy">
+        <Position x="426" y="210" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="promote_url">https://promote.c.yhat.com</Value>
+          <Value name="username">colin</Value>
+          <Value name="model_name">IrisClassifierDesigner</Value>
+          <Value name="confirm">True</Value>
+          <Value name="api_key">4AA6BB30658A146EF588F7D4D4F54EB636FB8EF723BC2A0A730EFCB8E1C5BD94208028653B762CB8477300E335A01A3482D1D8A02B94C06B0D1D07251CA2CB164DB034D8BA664925C29D7C12E4A29F1E074FDE446862E081379BDDC336B9F98AB87168FBF513E0E5CC767391DD1D4437B97AEBE41243AD40A74EE816EFE071943464BCE60AFEF1EABE1A4E316421DA6DBDC010510604A6F1CAEEAE83B1E29FD4281FB04260F67B7E3E06FD8EDCB2EA2E67E8AD898E5C90E4AEAC2C030A929D0597F320E32F62FDFB801B2C4ED4B1D6E3AFC63E7D9C1F324796FD65624B96FD0EAE1F8D2BB7916411FD3B1B80F1C3CE3A6F927941DB19E5ECC9FB09515C5CCB16E2B13CBB3C1BC989293E443533DA123B3EB0CE12F8395BE33B1577E393CDFBD92CCD8A6805002502BFFA6EF2F6E0D8DCED3DAAB572416</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="Deploy\Supporting_Macros\deploy-engine.yxmc" EngineDll="Macro" EngineDllEntryPoint="Deploy\Supporting_Macros\deploy-engine.yxmc" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AutoField.AutoField">
+        <Position x="186" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Fields>
+            <Field field="sepal­_length" selected="True" />
+            <Field field="sepal_width" selected="True" />
+            <Field field="petal_length" selected="True" />
+            <Field field="petal_width" selected="True" />
+            <Field field="class" selected="True" />
+            <Field field="*Unknown" selected="True" />
+          </Fields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="sepal_length" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="Double" />
+            <Field name="sepal_width" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="Double" />
+            <Field name="petal_length" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="Double" />
+            <Field name="petal_width" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="Double" />
+            <Field name="species" size="15" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAutoField" />
+    </Node>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="66" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">Z:\promote-r-client\examples\iris_classifier\iris.csv</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>iris.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="sepal_length" size="254" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="V_String" />
+            <Field name="sepal_width" size="254" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="V_String" />
+            <Field name="petal_length" size="254" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="V_String" />
+            <Field name="petal_width" size="254" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="V_String" />
+            <Field name="species" size="254" source="File: Z:\promote-r-client\examples\iris_classifier\iris.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Model" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>deploy_tool_irisClassifier</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

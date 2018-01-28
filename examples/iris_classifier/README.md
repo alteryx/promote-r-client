@@ -11,5 +11,10 @@ Iris Setosa, Iris Versicolor, Iris Verginica
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/440px-Iris_virginica.jpg" height="150px" />
 
 `train.R` demonstrates how to deploy this model directly from within an R console.
-`deploy_irisClassifier_workflow.yxmd` demonstrates how to build the same model using Alteryx Designers' R tool
+`deploy_irisClassifier.yxmd` demonstrates how to build the same model using Alteryx Designers' R tool
+`deploy_tool_irisClassifier.yxmd` demonstrates how to build the same model using Alteryx Designers' RandomForest tool
+
+![](./deploy_irisClassifier_workflow.png)
+![](./deploy_tool_irisClassifier.png)
+
 
