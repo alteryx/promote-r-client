@@ -289,6 +289,22 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
 
     dependencies <- promote$dependencies[promote$dependencies$install,]
 
+    body <- list(
+      "model_image" = httr::upload_file(image_file),
+      "modelname" = model_name,
+      "packages" = jsonlite::toJSON(dependencies),
+      "code" = capture.src(all_funcs),
+      "custom_image" = custom_image
+    )
+
+    promotesh <- paste(getwd(), "/promote.sh", sep = "")
+    if (file.exists(promotesh)) {
+      con <- file(promotesh)
+      out <- paste(c(readLines(con)), collapse="\n")
+      close(con)
+      body[["promotesh"]] <- out
+    }
+
     err.msg <- paste("Could not connect to Promote. Please ensure that your",
                      "specified server is online. Contact info [at] promotehq [dot] com",
                      "for further support.",
@@ -296,15 +312,8 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
                      "Specified endpoint:",
                      env,
                      sep="\n")
-    rsp <- httr::POST(url, httr::authenticate(AUTH[["username"]], AUTH[["apikey"]], 'basic'),
-      body = list(
-        "model_image" = httr::upload_file(image_file),
-        "modelname" = model_name,
-        "packages" = jsonlite::toJSON(dependencies),
-        "code" = capture.src(all_funcs),
-        "custom_image" = custom_image
-      )
-    )
+    rsp <- httr::POST(url, httr::authenticate(AUTH[["username"]], AUTH[["apikey"]], 'basic'), body = body)
+
     body <- httr::content(rsp)
     if (rsp$status_code != 200) {
       unlink(image_file)
