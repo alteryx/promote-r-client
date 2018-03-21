@@ -16,7 +16,7 @@ model.predict <- function(data) {
 testcase <- data.frame(subset(cars, select = -c(qsec))[1,])
 model.predict(testcase)
 
-jsonlite::toJSON(testcase)
+jsonlite::toJSON(testcase, na='string')
 # [{"mpg":21,"cyl":6,"disp":160,"hp":110,"drat":3.9,"wt":2.62,"gear":4,"carb":4}] 
 
 promote.config  <- c(

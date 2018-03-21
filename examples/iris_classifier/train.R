@@ -18,6 +18,7 @@ model.predict <- function(data) {
 testdata <- df[1,1:4]
 model.predict(testdata)
 
+jsonlite::toJSON(testdata, na='string')
 # {"sepal_length":5.1,"sepal_width":3.5,"petal_length":1.4,"petal_width":0.2}
 
 promote.library("randomForest")
