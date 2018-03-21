@@ -296,8 +296,8 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
       "code" = capture.src(all_funcs),
       "custom_image" = custom_image
     )
-
-    # checks for promotesh filepath assigned in model
+    
+    promotesh <- paste(getwd(), "/promote.sh", sep = "")
     if (file.exists(promotesh)) {
       con <- file(promotesh)
       out <- paste(c(readLines(con)), collapse="\n")
