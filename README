@@ -6,6 +6,8 @@
 install.packages("promote")
 ```
 
+There are more examples in the `examples/` directory
+
 ## Usage
 
 ```r

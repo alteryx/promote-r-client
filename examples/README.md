@@ -11,7 +11,7 @@ install.packages("promote")
 Deploying a predictive model takes 5 parts:
 
 1. Load in the promote library: `library(promote)`
-2. Create a `model.predict` function
+2. Create a `model.predict()` function
 3. Add any libraries the model requires `promote.library('dplyr')`
 4. Setup the authentication with `promote.config`
 5. Deploy the model: `promote.deploy`
@@ -29,8 +29,6 @@ model.predict <- function(request) {
       greeting <- "name is too short"
   } else {
     greeting <- paste0("Hello ", me, "!")
-  }
-  greeting
 }
 
 # test it locally
@@ -46,4 +44,3 @@ promote.config  <- c(
 )
 
 promote.deploy("HelloWorld", confirm = FALSE)
-```
