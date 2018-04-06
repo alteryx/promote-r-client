@@ -5,6 +5,9 @@ promote <- new.env(parent = emptyenv())
 # include all the packages listed in imports
 promote$dependencies <- data.frame()
 
+# Metadata from the model
+promote$metadata <- data.frame()
+
 # Private function for storing requirements that will be imported on
 # the Promote server
 promote$model.require <- function() {
@@ -188,6 +191,42 @@ promote.library <- function(name, src="CRAN", version=NULL, user=NULL, install=T
   set.model.require()
 }
 
+#' Add metadata to the deployment of your promote model
+#'
+#' @param key key name for the metadata entry
+#' @param value value for the metadata entry
+#' @keywords metadata
+#' @export
+#' @examples
+#' \dontrun{
+#' promote.metadata("key", "value")
+#' promote.metadata("R_squared", summary(fit)$r.squared)
+#' promote.metadata("R_squared_adj", summary(fit)$adj.r.squared)
+#' promote.metadata("deploy_node", Sys.info()[["nodename"]])
+#' }
+#' @importFrom utils packageDescription
+promote.metadata <- function(name, value) {
+  if (is.null(name)) {
+    stop("promote.metadata requires a 'name' field")
+  }
+  if (is.null(value)) {
+    stop("promote.metadata requires a 'value' field")
+  }
+  if (typeof(name) != "character") {
+    stop("promote.metadata name must be a character type")
+  }
+  if (typeof(value) != "character") {
+    value <- toString(value)
+  }
+  if (nchar(name) > 21) {
+    stop("please limit your name field to 20 characters or less")
+  }
+   if (nchar(value) > 51) {
+    stop("please limit your value field to 50 characters or less")
+  }
+  add.metadata(name, value)
+}
+
 #' Removes a library from the promote model's dependency list
 #'
 #' @param name of the package to be removed
@@ -288,13 +327,15 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
     }
 
     dependencies <- promote$dependencies[promote$dependencies$install,]
+    metadata <- promote$metadata
 
     body <- list(
       "model_image" = httr::upload_file(image_file),
       "modelname" = model_name,
       "packages" = jsonlite::toJSON(dependencies),
       "code" = capture.src(all_funcs),
-      "custom_image" = custom_image
+      "custom_image" = custom_image,
+      "metadata" = jsonlite::toJSON(metadata)
     )
     
     promotesh <- paste(getwd(), "/promote.sh", sep = "")
