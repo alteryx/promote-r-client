@@ -281,6 +281,9 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
   if (length(AUTH) == 0) {
     stop("Please specify your account credentials using promote.config.")
   }
+  if (nrow(promote$metadata) > 6) {
+    stop("promote.metadata allows a maximum of 6 items")
+  }
 
 
   if ("env" %in% names(AUTH)) {
@@ -337,7 +340,7 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
       "custom_image" = custom_image,
       "metadata" = jsonlite::toJSON(metadata)
     )
-    
+
     promotesh <- paste(getwd(), "/promote.sh", sep = "")
     if (file.exists(promotesh)) {
       con <- file(promotesh)
