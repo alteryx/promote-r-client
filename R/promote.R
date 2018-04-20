@@ -193,7 +193,7 @@ promote.library <- function(name, src="CRAN", version=NULL, user=NULL, install=T
 
 #' Add metadata to the deployment of your promote model
 #'
-#' @param key key name for the metadata entry
+#' @param name key name for the metadata entry
 #' @param value value for the metadata entry
 #' @keywords metadata
 #' @export

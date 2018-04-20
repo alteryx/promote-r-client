@@ -1,7 +1,7 @@
 Package: promote
 Type: Package
 Title: Client for the 'Alteryx Promote' API
-Version: 1.0.1
+Version: 1.0.2
 Date: 2018-01-22
 Author: Paul E. Promote <promotedev@alteryx.com>
 Maintainer: Paul E. Promote <promotedev@alteryx.com>

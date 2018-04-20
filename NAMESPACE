@@ -2,6 +2,7 @@
 
 export(promote.deploy)
 export(promote.library)
+export(promote.metadata)
 export(promote.predict)
 export(promote.predict_raw)
 export(promote.unload)
