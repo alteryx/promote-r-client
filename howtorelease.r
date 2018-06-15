@@ -5,12 +5,12 @@ devtools::document()
 
 # test the package
 devtools::check()
-devtools::check_man()
+# devtools::check_man()
 # devtools::check_cran()
 # devtools::release_checks()
 
 # build the package
-devtools::build(binary = TRUE)
+devtools::build(binary = FALSE)
 # f <- devtools::build()
 
 # install
