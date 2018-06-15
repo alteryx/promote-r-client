@@ -17,6 +17,9 @@ model.predict <- function(request) {
   greeting
 }
 
+promote.metadata("NAME1",value1)
+promote.metadata("NAME2",value2)
+
 promote.config  <- c(
   username = "YOUR_USERNAME",
   apikey = "YOUR_API_KEY",
