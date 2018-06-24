@@ -64,6 +64,7 @@ promote.deploy("HelloWorld", confirm = FALSE)
 ```
 
 <hr>
+
 ### Setting the Auth
 
 To deploy models, you'll need to add your username, API key, and URL to the `promote.config` variable
@@ -125,6 +126,7 @@ promote.metadata("two","2")
 promote.metadata("list",list(a=1,b=2))
 ```
 <hr>
+
 ### `promote.library()`
 
 Tell the Promote servers to install a package needed to run `model.predict()`
