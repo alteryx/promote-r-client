@@ -66,7 +66,7 @@ promote.deploy("HelloWorld", confirm = FALSE)
 <hr>
 ### Setting the Auth
 
-To deploy models, you'll need to add your username, API key, and URL to the `promte.config` variable
+To deploy models, you'll need to add your username, API key, and URL to the `promote.config` variable
 ```r
 promote.config <- c(
   username = [USERNAME],
@@ -75,6 +75,7 @@ promote.config <- c(
 )
 ```
 <hr>
+
 ### `Promote`
 
 The `Promote` packages has 3 methods:
