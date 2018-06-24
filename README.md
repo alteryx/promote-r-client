@@ -106,7 +106,7 @@ promote.deploy("IrisClassifier_model",confirm=FALSE)
 ```
 <hr>
 
-### `promote.metadata()``
+### `promote.metadata()`
 
 Store custom metadta about amoel as part of the `model.predict()` when it is sent to the Promote servers. (limited to 6 key-value pairs)
 
