@@ -95,6 +95,11 @@ model.predict <- function(df) {
   output
 }
 
+# add metadata
+promote.metadata("aic",my.glm$aic)
+promote.metadata("deviance",my.glm$deviance)
+promote.metadata("null.deviance",my.glm$null.deviance)
+
 # test the model locally with some sample JSON
 TESTDATA <- jsonlite::fromJSON('{"loan_amnt": 54000,
   "home_ownership": "RENT",

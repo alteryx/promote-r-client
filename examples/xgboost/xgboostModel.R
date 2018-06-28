@@ -24,6 +24,12 @@ testcase <- jsonlite::toJSON(as.matrix(test$data[1:3,]), matrix = "columnmajor")
 # test locally
 model.predict(jsonlite::fromJSON(testcase))
 
+# add metadata
+promote.metadata("niter",xb$niter)
+promote.metadata("best_iter",min(xb$evaluation_log$iter[xb$evaluation_log$train_error==min(xb$evaluation_log$train_error)]))
+promote.metadata("best_train_error",min(xb$evaluation_log$train_error))
+
+
 promote.config  <- c(
   username = Sys.getenv("PROMOTE_USERNAME"),
   apikey = Sys.getenv("PROMOTE_APIKEY"),
