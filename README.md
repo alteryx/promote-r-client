@@ -121,7 +121,7 @@ promote.config <- c(
 )
 ```
 
-#### `promote.deploy()``
+#### `promote.deploy()`
 The deploy function captures `model.predict()` and the `promote.sh` file and sends them to the Promote servers
 
 **Arguments**
