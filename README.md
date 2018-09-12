@@ -42,6 +42,7 @@ example-model/
 - [`promote.config`](#promoteconfig)
 - [`promote.deploy`](#promotedeploy)
 <hr>
+
 #### <a name="setup"></a>Initial Setup
 Load the `promote` library that was previously installed
 ```r
@@ -54,6 +55,7 @@ Import your saved model object
 load("my_model.rda")
 ```
 <hr>
+
 #### `model.predict()`
 The `model.predict` function is used to define the API endpoint for a model and is executed each time a model is called. **This is the core of the API endpoint**
 
@@ -68,6 +70,7 @@ model.predict <- function(data) {
 }
 ```
 <hr>
+
 #### <a name="testing"></a>Test Data
 It is a good practice to test the `model.predict` function as part of the deployment script to make sure it successfully produces an output. Once deployed, the `data` being input into the `model.predict` function will always be in the form of an R [data frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html). The incoming JSON will be converted to a data frame using the `fromJSON()` method available from either [jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf) or [rjson](https://cran.r-project.org/web/packages/rjson/rjson.pdf). Which library is used can be configured in the advanced model management section of the Promote App.
 
@@ -78,6 +81,7 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 
 ```
 <hr>
+
 #### `promote.library()`
 Tell the Promote servers to install a package required to run `model.predict()`
 
@@ -90,6 +94,7 @@ promote.library("randomforest")
 promote.library("plyr")
 ```
 <hr>
+
 #### `promote.metadata()`
 Store custom metadata about a model as part of the `model.predict()` when it is sent to the Promote servers. (limited to 6 key-value pairs)
 
@@ -104,6 +109,7 @@ promote.metadata("two", "2")
 promote.metadata("list", list(a=1,b=2))
 ```
 <hr>
+
 #### `promote.config()`
 To deploy models, add a username, API key, and URL to the `promote.config` variable
 
@@ -121,6 +127,7 @@ promote.config <- c(
 )
 ```
 <hr>
+
 #### `promote.deploy()`
 The deploy function captures `model.predict()` and the `promote.sh` file and sends them to the Promote servers
 
@@ -133,6 +140,7 @@ The deploy function captures `model.predict()` and the `promote.sh` file and sen
 promote.deploy(name="IrisClassifier_model", confirm=FALSE)
 ```
 <hr>
+
 ### `promote.sh`
 The `promote.sh` file can be included in your model directory. It is executed before your model is built and can be used to install low-level system packages such as Linux packages and other dependencies.
 
