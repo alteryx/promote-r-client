@@ -105,7 +105,7 @@ promote.metadata("list", list(a=1,b=2))
 ```
 
 #### `promote.config()`
-To deploy models, you'll need to add your username, API key, and URL to the `promote.config` variable
+To deploy models, add a username, API key, and URL to the `promote.config` variable
 
 **Arguments**
 - `username`(_string_): the username used to sign into the Promote app
@@ -115,9 +115,9 @@ To deploy models, you'll need to add your username, API key, and URL to the `pro
 **Example**
 ```r
 promote.config <- c(
-  username = [USERNAME],
-  apikey = [APIKEY],
-  env = [URL]
+  username = "username",
+  apikey = "apikey",
+  env = "http://promote.company.com/"
 )
 ```
 
