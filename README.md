@@ -1,5 +1,5 @@
 # Altery Promote R Client
-R package for deploying models buiult using R to Altery Promote
+R package for deploying models built using R to Alteryx Promote
 
 ### Installation
 
