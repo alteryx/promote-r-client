@@ -110,7 +110,7 @@ To deploy models, you'll need to add your username, API key, and URL to the `pro
 **Arguments**
 - `username`(_string_): the username used to sign into the Promote app
 - `apikey`(_string_): the random API key that is assigned to that username
-- 'env'(_string_): the URL that can be used to access the Promote app's frontend
+- `env`(_string_): the URL that can be used to access the Promote app's frontend
 
 **Example**
 ```r
@@ -130,5 +130,5 @@ The deploy function captures `model.predict()` and the `promote.sh` file and sen
 
 **Example**
 ```r
-promote.deploy("IrisClassifier_model", confirm=FALSE)
+promote.deploy(name="IrisClassifier_model", confirm=FALSE)
 ```
