@@ -34,15 +34,15 @@ example-model/
 
 ### `deploy.R`
 #### Steps
-- [Initial Setup](#InitialSetup)
+- [Initial Setup](#setup)
 - [`model.predict`](#modelpredict)
-- [Test Data](#TestData)
+- [Test Data](#testing)
 - [`promote.library`](#promotelibrary)
 - [`promote.metadata`](#promotemetadata)
 - [`promote.config`](#promoteconfig)
 - [`promote.deploy`](#promotedeploy)
 
-#### Initial Setup
+#### <a name="setup"></a>Initial Setup
 Load the `promote` library that was previously installed
 ```r
 library(promote)
@@ -68,7 +68,7 @@ model.predict <- function(data) {
 }
 ```
 
-#### Test Data
+#### <a name="testing"></a>Test Data
 It is a good practice to test the `model.predict` function as part of the deployment script to make sure it successfully produces an output. Once deployed, the `data` being input into the `model.predict` function will always be in the form of an R [data frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html). The incoming JSON will be converted to a data frame using the `fromJSON()` method available from either [jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf) or [rjson](https://cran.r-project.org/web/packages/rjson/rjson.pdf). Which library is used can be configured in the advanced model management section of the Promote App.
 
 **Example**
