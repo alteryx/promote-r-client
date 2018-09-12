@@ -16,7 +16,7 @@ install.packages("promote")
 
 ### Project Overview
 
-In order for all of your model dependencies to be transfered over to Alteryx Promote, you must follow a particular structure.
+In order for all of your model dependencies to be transferred over to Alteryx Promote, you must follow a particular structure.
 
 #### Example model directory structure:
 ```
@@ -53,7 +53,7 @@ model.predict <- function(request) {
 promote.metadata("NAME1",value1)
 promote.metadata("NAME2",value2)
 
-# specify the username, apikey and url, and then deploy
+# specify the username, api key and url, and then deploy
 promote.config  <- c(
   username = "YOUR_USERNAME",
   apikey = "YOUR_API_KEY",
@@ -102,13 +102,13 @@ The deploy function captures `model.predict()` and the `promote.sh` file and sen
 
 Deploy the "IrisClassifier_model" and don't require confirmation on deployment.
 ```r
-promote.deploy("IrisClassifier_model",confirm=FALSE)
+promote.deploy("IrisClassifier_model", confirm=FALSE)
 ```
 <hr>
 
 ### `promote.metadata()`
 
-Store custom metadta about amoel as part of the `model.predict()` when it is sent to the Promote servers. (limited to 6 key-value pairs)
+Store custom metadata about a model as part of the `model.predict()` when it is sent to the Promote servers. (limited to 6 key-value pairs)
 
 #### Usage
 
@@ -122,8 +122,8 @@ Store custom metadta about amoel as part of the `model.predict()` when it is sen
 
 ```r
 promote.metadata("one", 1)
-promote.metadata("two","2")
-promote.metadata("list",list(a=1,b=2))
+promote.metadata("two", "2")
+promote.metadata("list", list(a=1,b=2))
 ```
 <hr>
 
