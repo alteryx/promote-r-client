@@ -1,33 +1,58 @@
 # Alteryx Promote R Client
-R package for deploying models built using R to Alteryx Promote
+Package for deploying models built using R to Alteryx Promote
 
-### Installation
-
-```r
-install.packages("promote")
-```
-
-### Example Models
+## Examples
 [Hello World](examples/helloworld) - a very simple model
 
 [Lending](examples/lending) - Use logistic regression to classify credit applications as good or bad
 
 [xgboost](examples/xgboost) - Use xgboost to train a classifier on the agaricus dataset
 
-### Project Overview
+## Installation
+### Client
+To install the promote library from CRAN, execute the following code from an active R session.
+```r
+install.packages("promote")
+```
 
-In order for all of your model dependencies to be transferred over to Alteryx Promote, you must follow a particular structure.
+Please refer to the [promote-python](https://github.com/alteryx/promote-python) package for instructions on installing the Python Client.
 
-#### Example model directory structure:
+### App
+Please refer to the [install guide](https://help.alteryx.com/promote/current/Administer/Installation.htm?tocpath=Administer%7C_____2) for instructions on installing the Promote App.
+
+## Usage
+### Model Directory Structure
 ```
 example-model/
-├── promote.sh
-└── main.R (our deployment script)
+├── deploy.R
+└── promote.sh (optional)
 ```
 
-`promote.sh` - this file is executed before your model is built. It can be used to install low-level system packages such as Linux packages
+- [`deploy.R`](#deployr): our primary model deployment script
 
-`main.R` - our primary model deployment script
+- [`promote.sh`](#promotesh): this file is executed before your model is built. It can be used to install low-level system packages such as Linux packages
+
+### `deploy.R`
+#### Steps
+- [setup](#setup)
+- [`model.predict`](#modelpredict)
+- [`promote.library`](#promotelibrary)
+- [`promote.metadata`](#promotemetadata)
+- [testing](#testing)
+- [`promote.config`](#promoteconfig)
+- [`promote.deploy`](#promotedeploy)
+
+#### setup
+Load the promote library that was previously installed
+```r
+library(promote)
+```
+
+Import your saved model object
+```r
+# Previously saved model 'save(my_model, file = "my_model.rda")'
+load("my_model.rda")
+```
 
 ## Building a model:
 
