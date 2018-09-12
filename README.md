@@ -31,6 +31,7 @@ example-model/
 - [`deploy.R`](#deployr): our primary model deployment script
 
 - [`promote.sh`](#promotesh): this file is executed before your model is built. It can be used to install low-level system packages such as Linux packages
+<hr>
 
 ### `deploy.R`
 #### Steps
@@ -158,5 +159,6 @@ echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 source ~/.bashrc
 ```
+<hr>
 
 ### Deployment
