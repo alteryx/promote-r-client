@@ -18,7 +18,7 @@ install.packages("promote")
 Please refer to the [promote-python](https://github.com/alteryx/promote-python) package for instructions on installing the Python Client.
 
 ### App
-Please refer to the [install guide](https://help.alteryx.com/promote/current/Administer/Installation.htm?tocpath=Administer%7C_____2) for instructions on installing the Promote App.
+Please refer to the [installation guide](https://help.alteryx.com/promote/current/Administer/Installation.htm?tocpath=Administer%7C_____2) for instructions on installing the Promote App.
 
 ## Usage
 ### Model Directory Structure
@@ -34,9 +34,9 @@ example-model/
 
 ### `deploy.R`
 #### Steps
-- [Initial Setup](#initialsetup)
+- [Initial Setup](#InitialSetup)
 - [`model.predict`](#modelpredict)
-- [Test Data](#testing)
+- [Test Data](#TestData)
 - [`promote.library`](#promotelibrary)
 - [`promote.metadata`](#promotemetadata)
 - [`promote.config`](#promoteconfig)
