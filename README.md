@@ -162,3 +162,15 @@ source ~/.bashrc
 <hr>
 
 ### Deployment
+There are a few ways to deploy a model using the `deploy.R` script
+1. In in an active R shell session, you can source the deploy.R file
+```r
+source("deploy.R")
+```
+
+2. If in a console/terminal/bash session, you can use the `Rscript` utility to source the bash_profile
+```shell
+Rscript deploy.R
+```
+
+3. If in an R IDE environment like [Rstudio](https://www.rstudio.com/), you can run each command in the script individually, and model deployment will occure when the `promote.deploy()` function is called.
