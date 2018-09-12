@@ -132,3 +132,23 @@ The deploy function captures `model.predict()` and the `promote.sh` file and sen
 ```r
 promote.deploy(name="IrisClassifier_model", confirm=FALSE)
 ```
+
+### `promote.sh`
+The `promote.sh` file can be included in your model directory. It is executed before your model is built and can be used to install low-level system packages such as Linux packages and other dependencies.
+
+**Example**
+```shell
+# Install Microsoft SQL Server RHEL7 ODBC Driver
+curl https://packages.microsoft.com/config/rhel/7/prod.repo > /etc/yum.repos.d/mssql-release.repo
+
+exit
+yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts
+ACCEPT_EULA=Y yum install msodbcsql17
+# optional: for bcp and sqlcmd
+ACCEPT_EULA=Y yum install mssql-tools
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### Deployment
