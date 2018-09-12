@@ -88,11 +88,11 @@ The `Promote` packages has 3 methods:
 
 #### Deploy a model to Alteryx Promote
 
-The `deploy function captures `model.predict()` and the `promote.sh` file and sends them to the Promote servers
+The deploy function captures `model.predict()` and the `promote.sh` file and sends them to the Promote servers
 
 #### Usage
 
-`promote.deploy(name,confirm=False)
+`promote.deploy(name,confirm=False)`
 
 #### Arguments
 - `name`(_string_): the name of the model to deploy to Alteryx Promote
@@ -137,7 +137,7 @@ Tell the Promote servers to install a package needed to run `model.predict()`
 
 #### Arguments
 
-- 'package'(_string_): the name of the package to install on the Promoter server
+- `package`(_string_): the name of the package to install on the Promoter server
 
 #### Examples
 
