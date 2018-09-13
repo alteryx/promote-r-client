@@ -1,5 +1,5 @@
 # Alteryx Promote R Client
-Package for deploying models built using R to Alteryx Promote
+Library for deploying models built using R to Alteryx Promote
 
 ## Examples
 [Hello World](examples/helloworld) - a very simple model
@@ -15,7 +15,7 @@ To install the promote library from CRAN, execute the following code from an act
 install.packages("promote")
 ```
 
-Please refer to the [promote-python](https://github.com/alteryx/promote-python) package for instructions on installing the Python Client.
+Please refer to the [promote-python](https://github.com/alteryx/promote-python) library for instructions on installing the Python Client.
 
 ### App
 Please refer to the [installation guide](https://help.alteryx.com/promote/current/Administer/Installation.htm?tocpath=Administer%7C_____2) for instructions on installing the Promote App.
@@ -84,15 +84,19 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 <hr>
 
 #### `promote.library()`
-Tell the Promote servers to install a package required to run `model.predict()`
+Tell the Promote servers to install a library required to run `model.predict()`
 
 **Arguments**
-- `package`(_string_): the name of the package to install on the Promoter server
+- `name`(_string_): the name of the library to install on the Promoter server
+- `src`(_string_, optional): where to look for the library. options:['CRAN' (default), 'github']
+- `version`(_string_, optional): the library version to install (defaults to `NULL` which installs the latest version)
+- `user`(_string_, optional): the github username if `src="github"` (defaults to `NULL`)
+- `install`(_boolean_, optional): whether or not to install the library in the deployed model container (defaults to `TRUE`)
 
 **Example**
 ```r
 promote.library("randomforest")
-promote.library("plyr")
+promote.library("plyr", src='CRAN', version=NULL, user=NULL, install=TRUE)
 ```
 <hr>
 
@@ -111,7 +115,7 @@ promote.metadata("list", list(a=1,b=2))
 ```
 <hr>
 
-#### `promote.config()`
+#### `promote.config`
 To deploy models, add a username, API key, and URL to the `promote.config` variable
 
 **Arguments**
@@ -133,12 +137,13 @@ promote.config <- c(
 The deploy function captures `model.predict()` and the `promote.sh` file and sends them to the Promote servers
 
 **Arguments**
-- `name`(_string_): the name of the model to deploy to Alteryx Promote
-- `confirm`(_boolean_, optional): If `TRUE`, then user will be prompted to confirm deployment
+- `model_name`(_string_): the name of the model to deploy to Alteryx Promote
+- `confirm`(_boolean_, optional): If `TRUE`, then user will be prompted to confirm deployment (defaults to `TRUE`)
+- `custom_image`(_string_, optional): The custom image tag to use when building the model (defaults to `NULL` which uses the default)
 
 **Example**
 ```r
-promote.deploy(name="IrisClassifier_model", confirm=FALSE)
+promote.deploy(name="MyFirstRModel", confirm=TRUE, custom_image=NULL)
 ```
 <hr>
 
