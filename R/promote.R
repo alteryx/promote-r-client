@@ -150,22 +150,30 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' promote.library("my_proprietary_package", install=FALSE)
 #' }
 #' @importFrom utils packageDescription
-promote.library <- function(name, src="CRAN", version=NULL, user=NULL, install=TRUE) {
+promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL) {
+
   # If a vector of CRAN packages is passed, add each of them
   if (length(name) > 1) {
     for (n in name) {
-      promote.library(n, install = install)
+      promote.library(n, src=src, version=version, user=user, install=install, auth_token=auth_token)
     }
     return()
   }
 
-  if (!src %in% c("CRAN", "github")) {
+  # if someone manually passes "CRAN" as src, set it to version to match the templating
+  if (src == "CRAN") {
+    src <- "version"
+  }
+
+  # Make sure it's using an accepted src
+  if (!src %in% c("version", "CRAN", "github", "gitlab", "bitbucket")) {
     stop(cat(src, "is not a valid package type"))
   }
 
-  if (src == "github") {
+# This is to support the legacy implementation of github (public only) installs
+  if (!grepl("/", name) && src %in% c("github", "gitlab", "bitbucket")) {
     if (is.null(user)) {
-      stop(cat("no github username specified"))
+      stop(cat("no repository username specified"))
     }
     installName <- paste(user, "/", name, sep="")
   } else {
@@ -173,20 +181,19 @@ promote.library <- function(name, src="CRAN", version=NULL, user=NULL, install=T
   }
 
   if (grepl("/", name)) {
-    src <- "github"
     nameAndUser <- unlist(strsplit(name, "/"))
     user <- nameAndUser[[1]]
     name <- nameAndUser[[2]]
   }
 
-  library(name, character.only = TRUE)
+ library(name, character.only = TRUE)
 
-  # If a version wasn't manually specified, get this info from the session
-  if (is.null(version)) {
+  # If a version wasn't manually specified for a CRAN install, get this info from the session
+  if (src=="version" && is.null(version)) {
     version <- packageDescription(name)$Version
   }
 
-  add.dependency(installName, name, src, version, install)
+  add.dependency(installName, name, src, version, install, auth_token)
 
   set.model.require()
 }
@@ -330,6 +337,7 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
     }
 
     dependencies <- promote$dependencies[promote$dependencies$install,]
+    print(dependencies)
     metadata <- promote$metadata
 
     body <- list(
