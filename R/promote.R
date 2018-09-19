@@ -150,12 +150,12 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' promote.library("my_proprietary_package", install=FALSE)
 #' }
 #' @importFrom utils packageDescription
-promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL) {
+promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL) {
 
   # If a vector of CRAN packages is passed, add each of them
   if (length(name) > 1) {
     for (n in name) {
-      promote.library(n, src=src, version=version, user=user, install=install, auth_token=auth_token)
+      promote.library(n, src=src, version=version, user=user, install=install, auth_token=auth_token, url=url)
     }
     return()
   }
@@ -166,21 +166,24 @@ promote.library <- function(name, src="version", version=NULL, user=NULL, instal
   }
 
   # Make sure it's using an accepted src
-  if (!src %in% c("version", "CRAN", "github", "gitlab", "bitbucket")) {
+  if (!src %in% c("version", "github", "git")) {
     stop(cat(src, "is not a valid package type"))
   }
 
 # This is to support the legacy implementation of github (public only) installs
-  if (!grepl("/", name) && src %in% c("github", "gitlab", "bitbucket")) {
+  if (!grepl("/", name) && src == "github") {
     if (is.null(user)) {
       stop(cat("no repository username specified"))
     }
     installName <- paste(user, "/", name, sep="")
+  } else if (src == "git") {
+    installName <- url
   } else {
     installName <- name
   }
 
-  if (grepl("/", name)) {
+# Also legacy code, but since we are now accepting github links for src='git' this grepl on it's own isn't enough
+  if (grepl("/", name) && src == "github") {
     nameAndUser <- unlist(strsplit(name, "/"))
     user <- nameAndUser[[1]]
     name <- nameAndUser[[2]]
