@@ -19,6 +19,14 @@ add.dependency <- function(name, importName, src, version, install, auth_token, 
     version <- NA
   }
 
+   if (is.null(branch)) {
+    version <- NA
+  }
+
+  if (src == "version") {
+    branch <- NA
+  }
+
   # Don't add the dependency if it's already there, but if a package with the same importName is present,
   # make sure to enter the most recent arguments in case of branch or name update
 
