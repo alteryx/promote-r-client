@@ -150,7 +150,7 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' promote.library("my_proprietary_package", install=FALSE)
 #' }
 #' @importFrom utils packageDescription
-promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, branch=NULL) {
+promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, branch="master") {
 
   # If a vector of CRAN packages is passed, add each of them
   if (length(name) > 1) {

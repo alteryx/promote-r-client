@@ -19,13 +19,19 @@ add.dependency <- function(name, importName, src, version, install, auth_token, 
     version <- NA
   }
 
-   if (is.null(branch)) {
-    branch <- NA
-  }
-
   # Don't add the dependency if it's already there
+  
+  # New plan: apply function with a callback that either adds the new row or updates the fields on an existing one
+  # this will need to take importName into account, since a link could have changed (maybe different deploy key after one expires) resulting in dupes
+
   dependencies <- promote$dependencies
-  if (!any(dependencies$name == name)) {
+  if (!any(dependencies$importName == importName)) {
+    newRow <- data.frame(name = name, importName = importName, src = src, version = version, install = install, auth_token = auth_token, branch = branch)
+    dependencies <- rbind(dependencies, newRow)
+    promote$dependencies <- dependencies
+  } else {
+    # ind <- which(dependencies$importName == importName)
+    dependencies <- subset(dependencies, importName != importName)
     newRow <- data.frame(name = name, importName = importName, src = src, version = version, install = install, auth_token = auth_token, branch = branch)
     dependencies <- rbind(dependencies, newRow)
     promote$dependencies <- dependencies
