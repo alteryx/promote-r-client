@@ -1,7 +1,7 @@
 Package: promote
 Type: Package
 Title: Client for the 'Alteryx Promote' API
-Version: 1.0.2
+Version: 1.1.0
 Date: 2018-04-20    
 Author: Paul E. Promote <promotedev@alteryx.com>
 Maintainer: Paul E. Promote <promotedev@alteryx.com>
@@ -16,4 +16,5 @@ Imports:
     jsonlite,
     stringr,
 License: FreeBSD
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
+Encoding: UTF-8
