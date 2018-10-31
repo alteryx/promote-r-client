@@ -5,8 +5,8 @@
 \title{Import one or more libraries and add them to the promote model's
 dependency list}
 \usage{
-promote.library(name, src = "CRAN", version = NULL, user = NULL,
-  install = TRUE)
+promote.library(name, src = "version", version = NULL, user = NULL,
+  install = TRUE, auth_token = NULL, url = NULL, branch = "master")
 }
 \arguments{
 \item{name}{name of the package to be added}
@@ -20,6 +20,12 @@ promote.library(name, src = "CRAN", version = NULL, user = NULL,
 \item{install}{Whether the package should also be installed into the model on the
 Promote server; this is typically set to False when the package has already been
 added to the Promote base image.}
+
+\item{auth_token}{Personal access token string associated with a private package's repository}
+
+\item{url}{A valid URL pointing to a remote hosted git repository}
+
+\item{branch}{The branch of the package to be installed}
 }
 \description{
 Import one or more libraries and add them to the promote model's

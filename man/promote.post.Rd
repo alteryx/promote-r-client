@@ -4,7 +4,8 @@
 \alias{promote.post}
 \title{Private function for performing a POST request}
 \usage{
-promote.post(endpoint, query = c(), data, silent = TRUE, bulk = FALSE)
+promote.post(endpoint, query = c(), data, silent = TRUE,
+  bulk = FALSE)
 }
 \arguments{
 \item{endpoint}{/path for REST request}
