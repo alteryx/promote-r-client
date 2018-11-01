@@ -35,9 +35,19 @@ dependency list
 \dontrun{
 promote.library("MASS")
 promote.library(c("wesanderson", "stringr"))
-promote.library("cats", src="github", user="hilaryparker")
 promote.library("hilaryparker/cats")
-promote.library("my_proprietary_package", install=FALSE)
+promote.library("cats", src="github", user="hilaryparker")
+promote.library("my_public_package", install=FALSE)
+promote.library("my_public_package", src="git", url="https://gitlab.com/userName/rpkg.git")
+promote.library("my_proprietary_package", src="github", auth_token=<yourToken>) 
+promote.library("testPkg", src="github", user="emessess", auth_token=<yourToken>) 
+promote.library("priv_pkg", 
+                src="git", 
+                url="https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
+promote.library("priv_pkg", 
+                 src="git", 
+                 url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 branch="stage")
 }
 }
 \keyword{import}
