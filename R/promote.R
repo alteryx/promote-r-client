@@ -148,9 +148,14 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' \dontrun{
 #' promote.library("MASS")
 #' promote.library(c("wesanderson", "stringr"))
-#' promote.library("cats", src="github", user="hilaryparker")
 #' promote.library("hilaryparker/cats")
-#' promote.library("my_proprietary_package", install=FALSE)
+#' promote.library("cats", src="github", user="hilaryparker")
+#' promote.library("my_public_package", install=FALSE)
+#' promote.library("my_public_package", src="git", url="https://gitlab.com/userName/repoName.git")
+#' promote.library("my_proprietary_package", src="github", auth_token=<yourToken>) 
+#' promote.library("testPkg", src="github", user="emessess", auth_token=<yourToken>) 
+#' promote.library("my_proprietary_package", src="git", url="https://x-access-token:<yourPersonalAccessToken>ATgithub.com/username/repoName.git")
+#' promote.library("my_proprietary_package", src="git", url="https://x-access-token:<yourPersonalAccessToken>ATgitlab.com/username/repoName.git", branch="desiredBranch")
 #' }
 #' @importFrom utils packageDescription
 promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, branch="master") {
