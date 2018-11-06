@@ -25,7 +25,7 @@ added to the Promote base image.}
 
 \item{url}{A valid URL pointing to a remote hosted git repository}
 
-\item{branch}{The branch of the package to be installed}
+\item{branch}{The branch or tag of the package to be installed}
 }
 \description{
 Import one or more libraries and add them to the promote model's

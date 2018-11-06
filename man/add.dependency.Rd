@@ -21,7 +21,7 @@ this may be different from the name used to install it)}
 
 \item{auth_token}{a personal access token for github or gitlab repositories}
 
-\item{branch}{The branch of the package to be installed}
+\item{branch}{The branch or tag of the package to be installed}
 }
 \description{
 Private function that adds a package to the list of dependencies
