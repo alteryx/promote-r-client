@@ -138,7 +138,7 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' @param user Github username associated with the package
 #' @param url A valid URL pointing to a remote hosted git repository
 #' @param auth_token Personal access token string associated with a private package's repository
-#' @param ref The branch, tag, or SHA of the package to be installed
+#' @param ref The git branch, tag, or SHA of the package to be installed
 #' @param install Whether the package should also be installed into the model on the
 #' Promote server; this is typically set to False when the package has already been
 #' added to the Promote base image.
