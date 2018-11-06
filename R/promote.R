@@ -138,7 +138,7 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' @param user Github username associated with the package
 #' @param url A valid URL pointing to a remote hosted git repository
 #' @param auth_token Personal access token string associated with a private package's repository
-#' @param branch The branch or tag of the package to be installed
+#' @param ref The branch, tag, or SHA of the package to be installed
 #' @param install Whether the package should also be installed into the model on the
 #' Promote server; this is typically set to False when the package has already been
 #' added to the Promote base image.
@@ -160,15 +160,15 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' promote.library("priv_pkg", 
 #'                  src="git", 
 #'                  url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
-#'                  branch="stage")
+#'                  ref="stage")
 #' }
 #' @importFrom utils packageDescription
-promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, branch="master") {
+promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master") {
 
   # If a vector of CRAN packages is passed, add each of them
   if (length(name) > 1) {
     for (n in name) {
-      promote.library(n, src=src, version=version, user=user, install=install, auth_token=auth_token, url=url, branch=NULL)
+      promote.library(n, src=src, version=version, user=user, install=install, auth_token=auth_token, url=url, ref=NULL)
     }
     return()
   }
@@ -209,7 +209,7 @@ promote.library <- function(name, src="version", version=NULL, user=NULL, instal
     version <- packageDescription(name)$Version
   }
 
-  add.dependency(installName, name, src, version, install, auth_token, branch)
+  add.dependency(installName, name, src, version, install, auth_token, ref)
 
   set.model.require()
 }

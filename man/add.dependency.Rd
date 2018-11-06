@@ -5,7 +5,7 @@
 \title{Private function that adds a package to the list of dependencies
 that will be installed on the Promote server}
 \usage{
-add.dependency(name, importName, src, version, install, auth_token, branch)
+add.dependency(name, importName, src, version, install, auth_token, ref)
 }
 \arguments{
 \item{name}{name of the package to be installed}
@@ -21,7 +21,7 @@ this may be different from the name used to install it)}
 
 \item{auth_token}{a personal access token for github or gitlab repositories}
 
-\item{branch}{The branch or tag of the package to be installed}
+\item{ref}{The git branch, tag, or SHA of the package to be installed}
 }
 \description{
 Private function that adds a package to the list of dependencies
