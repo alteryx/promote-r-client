@@ -7,7 +7,7 @@
 #' @param version version of the package
 #' @param install whether or not the package should be installed in the model image
 #' @param auth_token a personal access token for github or gitlab repositories
-#' @param branch The branch of the package to be installed
+#' @param branch The branch or tag of the package to be installed
 
 add.dependency <- function(name, importName, src, version, install, auth_token, branch) {
   # nulls will break the data.frame/rbind 
