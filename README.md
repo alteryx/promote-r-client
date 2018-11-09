@@ -37,7 +37,7 @@ Before beginning building a model, be sure to import the `promote` package:
 
 ### The `model.predict()` function
 
-The `model.predict` function is used o define the API endpoint for a model and is executed each time a model is called. **This is the core of the API endpoint**
+The `model.predict` function is used to define the API endpoint for a model and is executed each time a model is called. **This is the core of the API endpoint**
 
 ```r
 # import the promote package and define our model function
@@ -133,15 +133,40 @@ Tell the Promote servers to install a package needed to run `model.predict()`
 
 #### Usage
 
-`promote.library(package)`
+`promote.library(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master")`
 
 #### Arguments
 
-- 'package'(_string_): the name of the package to install on the Promoter server
+ - `name`	name of the package to be added
+- `src`	source from which the package will be installed on Promote (CRAN (version) or git)
+- `version`	version of the package to be added
+- `user`	Github username associated with the package
+- `install`	Whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
+- `auth_token` Personal access token string associated with a private package's repository (only works when `src='github'`, reccommended usage is to include PAT in the URL parameter while using `src='git'`)
+- `url` A valid URL pointing to a remote hosted git repository
+- `ref`	The git branch, tag, or SHA of the package to be installed
 
 #### Examples
 
+Public Repositories:
 ```r
 promote.library("randomforest")
-promote.library("plyr")
+promote.library(c("wesanderson", "stringr"))
+promote.library("hilaryparker/cats")
+promote.library("cats", src="github", user="hilaryparker")
+promote.library("my_public_package", install=FALSE)
+promote.library("my_public_package", src="git", url="https://gitlab.com/userName/rpkg.git")
+```
+
+Private Repositories:
+```r
+promote.library("my_proprietary_package", src="github", auth_token=<yourToken>) 
+promote.library("testPkg", src="github", user="emessess", auth_token=<yourToken>) 
+promote.library("priv_pkg", 
+                src="git", 
+                url="https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
+promote.library("priv_pkg", 
+                 src="git", 
+                 url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 ref="stage")
 ```
