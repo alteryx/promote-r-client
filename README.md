@@ -65,12 +65,10 @@ load("my_model.rda")
 The `model.predict` function is used to define the API endpoint for a model and is executed each time a model is called. **This is the core of the API endpoint**
 
 ### Usage
-`promote.deploy(model_name, confirm = TRUE, custom_image = NULL)`
+`model.predict(data)`
 
 ### Arguments
 - `data` the data frame generated from the JSON sent to the deployed model
-- `confirm` 	boolean indicating whether to prompt before deploying
-- `custom_image` name of the image you'd like your model to use
 
 **Example:**
 ```r
@@ -192,11 +190,11 @@ The deploy function captures `model.predict` and the `promote.sh` file and sends
 ### Arguments
 - `model_name` the name of the model to deploy to Alteryx Promote
 - `confirm` if true, the user will be prompted to confirm deployment 
-- `custom_image`(_string_, optional): The custom image tag to use when building the model
+- `custom_image` the custom image tag to use when building the model
 
 **Example:**
 ```r
-promote.deploy(name="MyFirstRModel", confirm = TRUE, custom_image = NULL)
+promote.deploy("MyFirstRModel", confirm = TRUE, custom_image = NULL)
 ```
 <hr>
 
@@ -220,7 +218,7 @@ source ~/.bashrc
 <hr>
 
 ### Deployment
-There are multiple way to run your `deploy.R` script and deploy your model.
+There are multiple ways to run your `deploy.R` script and deploy your model.
 1. In in an active R shell session, you can source the deploy.R file.
 ```r
 source("deploy.R")
