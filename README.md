@@ -84,21 +84,51 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 <hr>
 
 #### `promote.library()`
-Tell the Promote servers to install a library required to run `model.predict()`
 
-**Arguments**
-- `name`(_string_): the name of the library to install on the Promoter server
-- `src`(_string_, optional): where to look for the library. options:['CRAN' (default), 'github']
-- `version`(_string_, optional): the library version to install (defaults to `NULL` which installs the latest version)
-- `user`(_string_, optional): the github username if `src="github"` (defaults to `NULL`)
-- `install`(_boolean_, optional): whether or not to install the library in the deployed model container (defaults to `TRUE`)
+#### Usage
 
-**Example**
+`promote.library(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master")`
+
+#### Arguments
+
+ - `name`	name of the package to be added
+- `src`	source from which the package will be installed on Promote (CRAN (version) or git)
+- `version`	version of the package to be added
+- `user`	Github username associated with the package
+- `install`	Whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
+- `auth_token` Personal access token string associated with a private package's repository (only works when `src='github'`, reccommended usage is to include PAT in the URL parameter while using `src='git'`)
+- `url` A valid URL pointing to a remote hosted git repository (recommended)
+- `ref`	The git branch, tag, or SHA of the package to be installed (SHA recommended)
+
+#### Examples
+
+Public Repositories:
 ```r
 promote.library("randomforest")
-promote.library("plyr", src='CRAN', version=NULL, user=NULL, install=TRUE)
+promote.library(c("wesanderson", "stringr"))
+promote.library("my_public_package", install=FALSE)
+promote.library("my_public_package", src="git", url="https://gitlab.com/userName/rpkg.git")
+promote.library("hilaryparker/cats")
+promote.library("cats", src="github", user="hilaryparker")
 ```
-<hr>
+
+Private Repositories:
+```r
+promote.library("priv_pkg", 
+                src="git", 
+                url="https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
+promote.library("priv_pkg", 
+                 src="git", 
+                 url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 ref="i2706b2a9f0c2f80f9c2a90ac4499a80280b3f8d")
+promote.library("priv_pkg", 
+                 src="git", 
+                 url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 ref="staging")
+promote.library("cats", src="github", user="hilaryparker", auth_token=<yourToken>) 
+
+```
+
 
 #### `promote.metadata()`
 Store custom metadata about a model as part of the `model.predict()` when it is sent to the Promote servers. (limited to 6 key-value pairs)
