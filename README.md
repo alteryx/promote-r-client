@@ -1,4 +1,4 @@
-# Altery Promote R Client
+# Alteryx Promote R Client
 R package for deploying models buiult using R to Altery Promote
 
 ### Installation
@@ -143,8 +143,8 @@ Tell the Promote servers to install a package needed to run `model.predict()`
 - `user`	Github username associated with the package
 - `install`	Whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
 - `auth_token` Personal access token string associated with a private package's repository (only works when `src='github'`, reccommended usage is to include PAT in the URL parameter while using `src='git'`)
-- `url` A valid URL pointing to a remote hosted git repository
-- `ref`	The git branch, tag, or SHA of the package to be installed
+- `url` A valid URL pointing to a remote hosted git repository (recommended)
+- `ref`	The git branch, tag, or SHA of the package to be installed (SHA recommended)
 
 #### Examples
 
@@ -152,21 +152,25 @@ Public Repositories:
 ```r
 promote.library("randomforest")
 promote.library(c("wesanderson", "stringr"))
-promote.library("hilaryparker/cats")
-promote.library("cats", src="github", user="hilaryparker")
 promote.library("my_public_package", install=FALSE)
 promote.library("my_public_package", src="git", url="https://gitlab.com/userName/rpkg.git")
+promote.library("hilaryparker/cats")
+promote.library("cats", src="github", user="hilaryparker")
 ```
 
 Private Repositories:
 ```r
-promote.library("my_proprietary_package", src="github", auth_token=<yourToken>) 
-promote.library("testPkg", src="github", user="emessess", auth_token=<yourToken>) 
 promote.library("priv_pkg", 
                 src="git", 
                 url="https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
 promote.library("priv_pkg", 
                  src="git", 
                  url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
-                 ref="stage")
+                 ref="i2706b2a9f0c2f80f9c2a90ac4499a80280b3f8d")
+promote.library("priv_pkg", 
+                 src="git", 
+                 url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 ref="staging")
+promote.library("cats", src="github", user="hilaryparker", auth_token=<yourToken>) 
+
 ```
