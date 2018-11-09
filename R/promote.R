@@ -136,6 +136,9 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' @param src source from which the package will be installed on Promote (github or CRAN)
 #' @param version version of the package to be added
 #' @param user Github username associated with the package
+#' @param url A valid URL pointing to a remote hosted git repository
+#' @param auth_token Personal access token string associated with a private package's repository
+#' @param ref The git branch, tag, or SHA of the package to be installed
 #' @param install Whether the package should also be installed into the model on the
 #' Promote server; this is typically set to False when the package has already been
 #' added to the Promote base image.
@@ -145,48 +148,68 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' \dontrun{
 #' promote.library("MASS")
 #' promote.library(c("wesanderson", "stringr"))
-#' promote.library("cats", src="github", user="hilaryparker")
 #' promote.library("hilaryparker/cats")
-#' promote.library("my_proprietary_package", install=FALSE)
+#' promote.library("cats", src="github", user="hilaryparker")
+#' promote.library("my_public_package", install=FALSE)
+#' promote.library("my_public_package", src="git", url="https://gitlab.com/userName/rpkg.git")
+#' promote.library("my_proprietary_package", src="github", auth_token=<yourToken>) 
+#' promote.library("testPkg", src="github", user="emessess", auth_token=<yourToken>) 
+#' promote.library("priv_pkg", 
+#'                 src="git", 
+#'                 url="https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
+#' promote.library("priv_pkg", 
+#'                  src="git", 
+#'                  url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+#'                  ref="stage")
 #' }
 #' @importFrom utils packageDescription
-promote.library <- function(name, src="CRAN", version=NULL, user=NULL, install=TRUE) {
+promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master") {
+
   # If a vector of CRAN packages is passed, add each of them
   if (length(name) > 1) {
     for (n in name) {
-      promote.library(n, install = install)
+      promote.library(n, src=src, version=version, user=user, install=install, auth_token=auth_token, url=url, ref=NULL)
     }
     return()
   }
 
-  if (!src %in% c("CRAN", "github")) {
+  # if someone manually passes "CRAN" as src, set it to version to match the templating
+  if (src == "CRAN") {
+    src <- "version"
+  }
+
+  # Make sure it's using an accepted src
+  if (!src %in% c("version", "github", "git")) {
     stop(cat(src, "is not a valid package type"))
   }
 
-  if (src == "github") {
+# This is to support the legacy implementation of github (public only) installs
+  if (!grepl("/", name) && src == "github") {
     if (is.null(user)) {
-      stop(cat("no github username specified"))
+      stop(cat("no repository username specified"))
     }
     installName <- paste(user, "/", name, sep="")
+  } else if (src == "git") {
+    installName <- url
   } else {
     installName <- name
   }
 
-  if (grepl("/", name)) {
-    src <- "github"
+# Also legacy code, but since we are now accepting github links for src='git' this grepl on it's own isn't enough
+  if (grepl("/", name) && src == "github") {
     nameAndUser <- unlist(strsplit(name, "/"))
     user <- nameAndUser[[1]]
     name <- nameAndUser[[2]]
   }
 
-  library(name, character.only = TRUE)
+ library(name, character.only = TRUE)
 
-  # If a version wasn't manually specified, get this info from the session
-  if (is.null(version)) {
+  # If a version wasn't manually specified for a CRAN install, get this info from the session
+  if (src=="version" && is.null(version)) {
     version <- packageDescription(name)$Version
   }
 
-  add.dependency(installName, name, src, version, install)
+  add.dependency(installName, name, src, version, install, auth_token, ref)
 
   set.model.require()
 }
@@ -330,6 +353,7 @@ promote.deploy <- function(model_name, confirm=TRUE, custom_image=NULL) {
     }
 
     dependencies <- promote$dependencies[promote$dependencies$install,]
+    print(dependencies)
     metadata <- promote$metadata
 
     body <- list(

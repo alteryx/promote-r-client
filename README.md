@@ -1,5 +1,5 @@
 # Alteryx Promote R Client
-Library for deploying models built using R to Alteryx Promote
+R package for deploying models built using R to Altery Promote
 
 ## Examples
 [Hello World](examples/helloworld) - a very simple model
