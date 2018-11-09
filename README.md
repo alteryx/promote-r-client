@@ -1,5 +1,5 @@
 # Alteryx Promote R Client
-R package for deploying models built using R to Altery Promote
+R package for deploying R models to Alteryx Promote
 
 ## Examples
 [Hello World](examples/helloworld) - a very simple model
@@ -10,17 +10,17 @@ R package for deploying models built using R to Altery Promote
 
 ## Installation
 ### Client
-To install the promote library from CRAN, execute the following code from an active R session.
+To install the promote package from CRAN, execute the following code from an active R session.
 ```r
 install.packages("promote")
 ```
 
-Please refer to the [promote-python](https://github.com/alteryx/promote-python) library for instructions on installing the Python Client.
+Please refer to the [promote-python](https://github.com/alteryx/promote-python) package for instructions on installing the Python client.
 
 ### App
 Please refer to the [installation guide](https://help.alteryx.com/promote/current/Administer/Installation.htm?tocpath=Administer%7C_____2) for instructions on installing the Promote App.
 
-## Usage
+## Using the Client
 ### Model Directory Structure
 ```
 example-model/
@@ -33,7 +33,7 @@ example-model/
 - [`promote.sh`](#promotesh): this file is executed before your model is built. It can be used to install low-level system packages such as Linux packages
 <hr>
 
-### `deploy.R`
+### deploy.R
 #### Steps
 - [Initial Setup](#setup)
 - [`model.predict`](#modelpredict)
@@ -45,37 +45,41 @@ example-model/
 <hr>
 
 #### <a name="setup"></a>Initial Setup
-Load the `promote` library that was previously installed
+Load the `promote` library that was previously installed:
 ```r
 library(promote)
 ```
 
-Import your saved model object
+Import your saved model object:
 ```r
 # Previously saved model 'save(my_model, file = "my_model.rda")'
 load("my_model.rda")
 ```
 <hr>
 
-#### `model.predict()`
+### `model.predict`
 The `model.predict` function is used to define the API endpoint for a model and is executed each time a model is called. **This is the core of the API endpoint**
 
-**Arguments**
-- `data`(_Data.Frame_): the data frame generated from the json sent to the deployed model
+### Usage
+`promote.deploy(model_name, confirm = TRUE, custom_image = NULL)`
 
-**Example**
+### Arguments
+- `data` the data frame generated from the JSON sent to the deployed model
+- `confirm` 	boolean indicating whether to prompt before deploying
+- `custom_image` name of the image you'd like your model to use
+
+**Example:**
 ```r
 model.predict <- function(data) {
   # generate predictions from the model based on the incoming dataframe
   predict(my_model, data)
 }
 ```
-<hr>
 
-#### <a name="testing"></a>Test Data
+### <a name="testing"></a>Test Data
 It is a good practice to test the `model.predict` function as part of the deployment script to make sure it successfully produces an output. Once deployed, the `data` being input into the `model.predict` function will always be in the form of an R [data frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html). The incoming JSON will be converted to a data frame using the `fromJSON()` method available from either [jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf) or [rjson](https://cran.r-project.org/web/packages/rjson/rjson.pdf). Which library is used can be configured in the advanced model management section of the Promote App.
 
-**Example**
+**Example:**
 ```r
 testdata <- '{"X1":[1,2,3],"X2":[4,5,6]}'
 model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
@@ -83,61 +87,66 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 ```
 <hr>
 
-#### `promote.library()`
+### `promote.library`
 
-#### Usage
+### Usage
 
-`promote.library(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master")`
+`promote.library(name, src = "version", version = NULL, user = NULL, install = TRUE, auth_token = NULL, url = NULL, ref = "master")`
 
-#### Arguments
+### Arguments
 
  - `name`	name of the package to be added
 - `src`	source from which the package will be installed on Promote (CRAN (version) or git)
 - `version`	version of the package to be added
 - `user`	Github username associated with the package
-- `install`	Whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
+- `install`	whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
 - `auth_token` Personal access token string associated with a private package's repository (only works when `src='github'`, reccommended usage is to include PAT in the URL parameter while using `src='git'`)
 - `url` A valid URL pointing to a remote hosted git repository (recommended)
 - `ref`	The git branch, tag, or SHA of the package to be installed (SHA recommended)
 
-#### Examples
+**Examples:**
 
 Public Repositories:
 ```r
 promote.library("randomforest")
 promote.library(c("wesanderson", "stringr"))
-promote.library("my_public_package", install=FALSE)
-promote.library("my_public_package", src="git", url="https://gitlab.com/userName/rpkg.git")
+promote.library("my_public_package", install = FALSE)
+promote.library("my_public_package", 
+                src = "git", 
+                url = "https://gitlab.com/userName/rpkg.git")
 promote.library("hilaryparker/cats")
-promote.library("cats", src="github", user="hilaryparker")
+promote.library("cats", src = "github", user = "hilaryparker")
 ```
 
 Private Repositories:
 ```r
 promote.library("priv_pkg", 
-                src="git", 
-                url="https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
+                src = "git", 
+                url = "https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
 promote.library("priv_pkg", 
-                 src="git", 
-                 url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
-                 ref="i2706b2a9f0c2f80f9c2a90ac4499a80280b3f8d")
+                 src = "git", 
+                 url = "https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 ref = "i2706b2a9f0c2f80f9c2a90ac4499a80280b3f8d")
 promote.library("priv_pkg", 
-                 src="git", 
-                 url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
-                 ref="staging")
-promote.library("cats", src="github", user="hilaryparker", auth_token=<yourToken>) 
-
+                 src = "git", 
+                 url = "https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 ref = "staging")
+promote.library("cats", src = "github", user = "hilaryparker", auth_token = <yourToken>) 
 ```
+<hr>
 
 
-#### `promote.metadata()`
-Store custom metadata about a model as part of the `model.predict()` when it is sent to the Promote servers. (limited to 6 key-value pairs)
+### `promote.metadata`
+Store custom metadata about a model as part of the `model.predict` call when it is sent to the Promote servers. (limited to 6 key-value pairs)
 
-**Arguments**
-- `name`(_string_): the name of your metadata (limit 20 characters)
-- `value`: a value for your metadata (will be converted to string and limited to 50 characters)
+### Usage
+`promote.metadata(name, value)`
 
-**Example**
+### Arguments
+- `name` the name of your metadata (limit 20 characters)
+- `value` a value for your metadata (will be converted to string and limited to 50 characters)
+
+**Example:**
 ```r
 promote.metadata("one", 1)
 promote.metadata("two", "2")
@@ -145,15 +154,14 @@ promote.metadata("list", list(a=1,b=2))
 ```
 <hr>
 
-#### `promote.config`
+### `promote.config`
 To deploy models, add a username, API key, and URL to the `promote.config` variable
 
-**Arguments**
-- `username`(_string_): the username used to sign into the Promote app
-- `apikey`(_string_): the random API key that is assigned to that username
-- `env`(_string_): the URL that can be used to access the Promote app's frontend
+- `username` the username used to sign into the Promote app
+- `apikey` the random API key that is assigned to that username
+- `env` the URL that can be used to access the Promote app's frontend
 
-**Example**
+**Example:**
 ```r
 promote.config <- c(
   username = "username",
@@ -163,24 +171,27 @@ promote.config <- c(
 ```
 <hr>
 
-#### `promote.deploy()`
-The deploy function captures `model.predict()` and the `promote.sh` file and sends them to the Promote servers
+### `promote.deploy`
+The deploy function captures `model.predict` and the `promote.sh` file and sends them to the Promote servers
 
-**Arguments**
-- `model_name`(_string_): the name of the model to deploy to Alteryx Promote
-- `confirm`(_boolean_, optional): If `TRUE`, then user will be prompted to confirm deployment (defaults to `TRUE`)
-- `custom_image`(_string_, optional): The custom image tag to use when building the model (defaults to `NULL` which uses the default)
+### Usage
+`promote.deploy(model_name, confirm = TRUE, custom_image = NULL)`
 
-**Example**
+### Arguments
+- `model_name` the name of the model to deploy to Alteryx Promote
+- `confirm` if true, the user will be prompted to confirm deployment 
+- `custom_image`(_string_, optional): The custom image tag to use when building the model
+
+**Example:**
 ```r
-promote.deploy(name="MyFirstRModel", confirm=TRUE, custom_image=NULL)
+promote.deploy(name="MyFirstRModel", confirm = TRUE, custom_image = NULL)
 ```
 <hr>
 
 ### `promote.sh`
 The `promote.sh` file can be included in your model directory. It is executed before your model is built and can be used to install low-level system packages such as Linux packages and other dependencies.
 
-**Example**
+**Example:**
 ```shell
 # Install Microsoft SQL Server RHEL7 ODBC Driver
 curl https://packages.microsoft.com/config/rhel/7/prod.repo > /etc/yum.repos.d/mssql-release.repo
@@ -197,7 +208,7 @@ source ~/.bashrc
 <hr>
 
 ### Deployment
-There are a few ways to deploy a model using the `deploy.R` script
+There are a few ways to deploy a model using the `deploy.R` script.
 1. In in an active R shell session, you can source the deploy.R file
 ```r
 source("deploy.R")
@@ -208,4 +219,4 @@ source("deploy.R")
 Rscript deploy.R
 ```
 
-3. If in an R IDE environment like [Rstudio](https://www.rstudio.com/), you can run each command in the script individually, and model deployment will occure when the `promote.deploy()` function is called.
+3. If in an R IDE environment like [Rstudio](https://www.rstudio.com/), you can run each command in the script individually, and model deployment will occure when the `promote.deploy` function is called.
