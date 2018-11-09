@@ -104,7 +104,7 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 - `version`	version of the package to be added
 - `user`	Github username associated with the package
 - `install`	whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
-- `auth_token` Personal access token string associated with a private package's repository (only works when `src='github'`, reccommended usage is to include PAT in the URL parameter while using `src='git'`)
+- `auth_token` Personal access token string associated with a private package's repository (only works when `src = 'github'`, recommended usage is to include PAT in the URL parameter while using `src='git'`)
 - `url` A valid URL pointing to a remote hosted git repository (recommended)
 - `ref`	The git branch, tag, or SHA of the package to be installed (SHA recommended)
 
@@ -221,12 +221,12 @@ source ~/.bashrc
 
 ### Deployment
 There are multiple way to run your `deploy.R` script and deploy your model.
-1. In in an active R shell session, you can source the deploy.R file
+1. In in an active R shell session, you can source the deploy.R file.
 ```r
 source("deploy.R")
 ```
 
-2. If in a console/terminal/bash session, you can use the `Rscript` utility to source the bash_profile
+2. If in a console/terminal/bash session, you can use the `Rscript` utility to run the file.
 ```shell
 Rscript deploy.R
 ```
