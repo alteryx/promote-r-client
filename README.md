@@ -1,24 +1,26 @@
 # Alteryx Promote R Client
-R package for deploying R models to Alteryx Promote
+Package for deploying R models to Alteryx Promote.
 
-## Examples
-[Hello World](examples/helloworld) - a very simple model
+### Examples:
+[Hello World](examples/helloworld) - A very simple model.
 
-[Lending](examples/lending) - Use logistic regression to classify credit applications as good or bad
+[Lending](examples/lending) - Use logistic regression to classify credit applications. as good or bad.
 
-[xgboost](examples/xgboost) - Use xgboost to train a classifier on the agaricus dataset
+[xgboost](examples/xgboost) - Use xgboost to train a classifier on the agaricus dataset.
+<hr>
 
 ## Installation
 ### Client
-To install the promote package from CRAN, execute the following code from an active R session.
+To install the promote package from CRAN, execute the following code from an active R session:
 ```r
 install.packages("promote")
 ```
 
-Please refer to the [promote-python](https://github.com/alteryx/promote-python) package for instructions on installing the Python client.
+(Please refer to the [promote-python](https://github.com/alteryx/promote-python) package for instructions on installing the Python client.)
 
-### App
-Please refer to the [installation guide](https://help.alteryx.com/promote/current/Administer/Installation.htm?tocpath=Administer%7C_____2) for instructions on installing the Promote App.
+### Promote App
+Please refer to the [installation guide](https://help.alteryx.com/promote/current/Administer/Installation.htm?tocpath=Administer%7C_____2) for instructions on installing the full Promote application.
+<hr>
 
 ## Using the Client
 ### Model Directory Structure
@@ -33,18 +35,20 @@ example-model/
 - [`promote.sh`](#promotesh): this file is executed before your model is built. It can be used to install low-level system packages such as Linux packages
 <hr>
 
-### deploy.R
-#### Steps
+## Deploying Your Model
+
+This section will walk through the steps and key functions of a successful `deploy.r` script. 
+#### Steps:
 - [Initial Setup](#setup)
-- [`model.predict`](#modelpredict)
+- [model.predict](#modelpredict)
 - [Test Data](#testing)
-- [`promote.library`](#promotelibrary)
-- [`promote.metadata`](#promotemetadata)
-- [`promote.config`](#promoteconfig)
-- [`promote.deploy`](#promotedeploy)
+- [promote.library](#promotelibrary)
+- [promote.metadata](#promotemetadata)
+- [promote.config](#promoteconfig)
+- [promote.deploy](#promotedeploy)
 <hr>
 
-#### <a name="setup"></a>Initial Setup
+### <a name="setup"></a>Initial Setup
 Load the `promote` library that was previously installed:
 ```r
 library(promote)
@@ -77,7 +81,7 @@ model.predict <- function(data) {
 ```
 
 ### <a name="testing"></a>Test Data
-It is a good practice to test the `model.predict` function as part of the deployment script to make sure it successfully produces an output. Once deployed, the `data` being input into the `model.predict` function will always be in the form of an R [data frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html). The incoming JSON will be converted to a data frame using the `fromJSON()` method available from either [jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf) or [rjson](https://cran.r-project.org/web/packages/rjson/rjson.pdf). Which library is used can be configured in the advanced model management section of the Promote App.
+It is a good practice to test the `model.predict` function as part of the deployment script to make sure it successfully produces an output. Once deployed, the `data` argument passed to the `model.predict` function will always be in the form of an R [data frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html). The incoming JSON will be converted to a data frame using the `fromJSON()` method available from either [jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf) or [rjson](https://cran.r-project.org/web/packages/rjson/rjson.pdf). Which library is used can be configured in the advanced model management section of the Promote App.
 
 **Example:**
 ```r
@@ -109,12 +113,17 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 Public Repositories:
 ```r
 promote.library("randomforest")
+
 promote.library(c("wesanderson", "stringr"))
+
 promote.library("my_public_package", install = FALSE)
+
 promote.library("my_public_package", 
                 src = "git", 
                 url = "https://gitlab.com/userName/rpkg.git")
+
 promote.library("hilaryparker/cats")
+
 promote.library("cats", src = "github", user = "hilaryparker")
 ```
 
@@ -122,16 +131,19 @@ Private Repositories:
 ```r
 promote.library("priv_pkg", 
                 src = "git", 
-                url = "https://x-access-token:<PersonalAccessToken>ATgithub.com/username/rpkg.git")
+                url = "https://x-access-token:<YourToken>ATgithub.com/username/rpkg.git")
+
 promote.library("priv_pkg", 
                  src = "git", 
-                 url = "https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 url = "https://x-access-token:<YourToken>ATgitlab.com/username/rpkg.git", 
                  ref = "i2706b2a9f0c2f80f9c2a90ac4499a80280b3f8d")
+
 promote.library("priv_pkg", 
                  src = "git", 
-                 url = "https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
+                 url = "https://x-access-token:<YourToken>ATgitlab.com/username/rpkg.git", 
                  ref = "staging")
-promote.library("cats", src = "github", user = "hilaryparker", auth_token = <yourToken>) 
+
+promote.library("cats", src = "github", user = "hilaryparker", auth_token = "3HwjSeMu1ynrYtc1e4yj") 
 ```
 <hr>
 
@@ -189,7 +201,7 @@ promote.deploy(name="MyFirstRModel", confirm = TRUE, custom_image = NULL)
 <hr>
 
 ### `promote.sh`
-The `promote.sh` file can be included in your model directory. It is executed before your model is built and can be used to install low-level system packages such as Linux packages and other dependencies.
+The `promote.sh` file can be included in your model directory. It is executed before your model is built and can be used to install low-level system packages such as Linux packages and other dependencies. Be aware of the current working directory for your R session when deploying to ensure the deployment finds and processes the `promote.sh` file.
 
 **Example:**
 ```shell
@@ -208,7 +220,7 @@ source ~/.bashrc
 <hr>
 
 ### Deployment
-There are a few ways to deploy a model using the `deploy.R` script.
+There are multiple way to run your `deploy.R` script and deploy your model.
 1. In in an active R shell session, you can source the deploy.R file
 ```r
 source("deploy.R")
@@ -219,4 +231,4 @@ source("deploy.R")
 Rscript deploy.R
 ```
 
-3. If in an R IDE environment like [Rstudio](https://www.rstudio.com/), you can run each command in the script individually, and model deployment will occure when the `promote.deploy` function is called.
+3. If using an R IDE environment like [Rstudio](https://www.rstudio.com/), you can run or source the script all at once or selectively. Model deployment will once the `promote.deploy` function is called.
