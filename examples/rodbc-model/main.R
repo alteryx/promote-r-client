@@ -5,8 +5,8 @@ library(RODBC)
 
 model.predict <- function(request) {
   string_created<-"Driver={ODBC Driver 17 for SQL Server}; . . ."
-  dbhandle <- odbcDriverConnect(string_created)
-  res <- sqlQuery(dbhandle, "select top 10 * from ds_res.DriveSystem_Results")
+  dbhandle <- RODBC::odbcDriverConnect(string_created)
+  res <- RODBC::sqlQuery(dbhandle, "select top 10 * from ds_res.DriveSystem_Results")
   message <- paste0("##########################: ", as.character(res$ind_alert_status[1]))
   odbcClose(dbhandle)
   message <- 'executed'
@@ -24,5 +24,5 @@ promote.config  <- c(
 )
 
 #deploy model
-promote.library("RODBC")
+#promote.library("RODBC")
 promote.deploy("RODBCModel", confirm = FALSE)
