@@ -24,5 +24,4 @@ promote.config  <- c(
 )
 
 #deploy model
-#promote.library("RODBC")
 promote.deploy("RODBCModel", confirm = FALSE)
