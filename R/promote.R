@@ -210,7 +210,12 @@ promote.library <- function(name, src="version", version=NULL, user=NULL, instal
     version <- packageDescription(name)$Version
   }
 
-  add.dependency(installName, name, src, version, install, auth_token, ref, subdir)
+  paramsList <- list(installName, name, src, version, install, auth_token, ref, subdir)
+  replacedNulls <- lapply(paramsList, function(x) ifelse(is.null(x), NA, x))
+
+  do.call(add.dependency, replacedNulls)
+
+  # add.dependency(installName, name, src, version, install, auth_token, ref, subdir)
 
   set.model.require()
 }
