@@ -11,30 +11,6 @@
 #' @param subdir The path to the repo subdirectory holding the package to be installed
 
 add.dependency <- function(name, importName, src, version, install, auth_token, ref, subdir) {
-  # nulls will break the data.frame/rbind 
-  # but we don't want to pass a version or auth token if not necessary
-
-  print(c(name, importName, src, version, install, auth_token, ref, subdir))
-  # if (is.null(auth_token)) {
-  #   auth_token <- NA
-  # }
-
-  # if (is.null(version)) {
-  #   version <- NA
-  # }
-
-  # if (is.null(ref)) {
-  #   version <- NA
-  # }
-
-  # if (is.null(subdir)) {
-  #   version <- NA
-  # }
-
-  # if (src == "version") {
-  #   ref <- NA
-  # }
-
   # Don't add the dependency if it's already there, but if a package with the same importName is present,
   # make sure to enter the most recent arguments in case of ref or name update
 
