@@ -101,7 +101,7 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 
  - `name`	name of the package to be added
 - `src`	source from which the package will be installed on Promote (CRAN (version) or git)
-- `version`	version of the package to be added
+- `version`	version of the package to be added (CRAN only, use `ref` parameter for git packages )
 - `user`	Github username associated with the package
 - `install`	whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
 - `auth_token` Personal access token string associated with a private package's repository (only works when `src = 'github'`, recommended usage is to include PAT in the URL parameter while using `src='git'`)
