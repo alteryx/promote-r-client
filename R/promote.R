@@ -162,6 +162,7 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #'                  src="git", 
 #'                  url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
 #'                  ref="stage")
+#' promote.library("my_proprietary_package", src="github", auth_token=<yourToken> subdir="/yourSubDirectory/")  
 #' }
 #' @importFrom utils packageDescription
 promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master", subdir=NULL) {
