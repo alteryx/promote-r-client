@@ -95,6 +95,8 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 
 `promote.library(name, src = "version", version = NULL, user = NULL, install = TRUE, auth_token = NULL, url = NULL, ref = "master", subdir = NULL)`
 
+**Note**: Installing custom packages from git requires Promote version 2018.4.1 or higher.
+
 ### Arguments
 
  - `name`	name of the package to be added
@@ -105,7 +107,7 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 - `auth_token` Personal access token string associated with a private package's repository (only works when `src = 'github'`, recommended usage is to include PAT in the URL parameter while using `src='git'`)
 - `url` A valid URL pointing to a remote hosted git repository (recommended)
 - `ref`	The git branch, tag, or SHA of the package to be installed (SHA recommended)
-- `subdir` The subdirectory of a git repository holding the package to install
+- `subdir` The subdirectory path of a git repository holding the package to install
 
 **Examples:**
 

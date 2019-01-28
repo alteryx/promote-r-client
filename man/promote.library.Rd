@@ -6,7 +6,8 @@
 dependency list}
 \usage{
 promote.library(name, src = "version", version = NULL, user = NULL,
-  install = TRUE, auth_token = NULL, url = NULL, ref = "master")
+  install = TRUE, auth_token = NULL, url = NULL, ref = "master",
+  subdir = NULL)
 }
 \arguments{
 \item{name}{name of the package to be added}
@@ -26,6 +27,8 @@ added to the Promote base image.}
 \item{url}{A valid URL pointing to a remote hosted git repository}
 
 \item{ref}{The git branch, tag, or SHA of the package to be installed}
+
+\item{subdir}{The path to the repo subdirectory holding the package to be installed}
 }
 \description{
 Import one or more libraries and add them to the promote model's
@@ -48,6 +51,7 @@ promote.library("priv_pkg",
                  src="git", 
                  url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
                  ref="stage")
+promote.library("my_package", src="github", auth_token=<yourToken> subdir="/pathToSubdir/")  
 }
 }
 \keyword{import}
