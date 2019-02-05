@@ -139,6 +139,7 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #' @param url A valid URL pointing to a remote hosted git repository
 #' @param auth_token Personal access token string associated with a private package's repository
 #' @param ref The git branch, tag, or SHA of the package to be installed
+#' @param subdir The path to the repo subdirectory holding the package to be installed
 #' @param install Whether the package should also be installed into the model on the
 #' Promote server; this is typically set to False when the package has already been
 #' added to the Promote base image.
@@ -161,9 +162,10 @@ promote.predict <- function(model_name, data, model_owner, raw_input = FALSE, si
 #'                  src="git", 
 #'                  url="https://x-access-token:<PersonalAccessToken>ATgitlab.com/username/rpkg.git", 
 #'                  ref="stage")
+#' promote.library("my_package", src="github", auth_token=<yourToken> subdir="/pathToSubdir/")  
 #' }
 #' @importFrom utils packageDescription
-promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master") {
+promote.library <- function(name, src="version", version=NULL, user=NULL, install=TRUE, auth_token=NULL, url=NULL, ref="master", subdir=NULL) {
 
   # If a vector of CRAN packages is passed, add each of them
   if (length(name) > 1) {
@@ -209,7 +211,12 @@ promote.library <- function(name, src="version", version=NULL, user=NULL, instal
     version <- packageDescription(name)$Version
   }
 
-  add.dependency(installName, name, src, version, install, auth_token, ref)
+  paramsList <- list(installName, name, src, version, install, auth_token, ref, subdir)
+  replacedNulls <- lapply(paramsList, function(x) ifelse(is.null(x), NA, x))
+
+  do.call(add.dependency, replacedNulls)
+
+  # add.dependency(installName, name, src, version, install, auth_token, ref, subdir)
 
   set.model.require()
 }

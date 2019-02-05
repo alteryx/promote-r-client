@@ -93,18 +93,21 @@ model.predict(data.frame(jsonlite::fromJSON(testdata),stringsAsFactors=TRUE))
 
 ### Usage
 
-`promote.library(name, src = "version", version = NULL, user = NULL, install = TRUE, auth_token = NULL, url = NULL, ref = "master")`
+`promote.library(name, src = "version", version = NULL, user = NULL, install = TRUE, auth_token = NULL, url = NULL, ref = "master", subdir = NULL)`
+
+**Note**: Installing custom packages from git requires Promote version 2018.4.1 or higher. Installing custom packages with `subdir` parameter requires Promote version 2019.1.0 or higher.
 
 ### Arguments
 
  - `name`	name of the package to be added
-- `src`	source from which the package will be installed on Promote (CRAN (version) or git)
-- `version`	version of the package to be added
+- `src`	source from which the package will be installed on Promote (CRAN or git)
+- `version`	version of the package to be added (CRAN only, use `ref` parameter for git packages)
 - `user`	Github username associated with the package
 - `install`	whether the package should also be installed into the model on the Promote server; this is typically set to False when the package has already been added to the Promote base image.
 - `auth_token` Personal access token string associated with a private package's repository (only works when `src = 'github'`, recommended usage is to include PAT in the URL parameter while using `src='git'`)
 - `url` A valid URL pointing to a remote hosted git repository (recommended)
 - `ref`	The git branch, tag, or SHA of the package to be installed (SHA recommended)
+- `subdir` The subdirectory path of a git repository holding the package to install
 
 **Examples:**
 

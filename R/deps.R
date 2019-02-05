@@ -8,38 +8,21 @@
 #' @param install whether or not the package should be installed in the model image
 #' @param auth_token a personal access token for github or gitlab repositories
 #' @param ref The git branch, tag, or SHA of the package to be installed
+#' @param subdir The path to the repo subdirectory holding the package to be installed
 
-add.dependency <- function(name, importName, src, version, install, auth_token, ref) {
-  # nulls will break the data.frame/rbind 
-  # but we don't want to pass a version or auth token if not necessary
-  if (is.null(auth_token)) {
-    auth_token <- NA
-  }
-
-  if (is.null(version)) {
-    version <- NA
-  }
-
-   if (is.null(ref)) {
-    version <- NA
-  }
-
-  if (src == "version") {
-    ref <- NA
-  }
-
+add.dependency <- function(name, importName, src, version, install, auth_token, ref, subdir) {
   # Don't add the dependency if it's already there, but if a package with the same importName is present,
   # make sure to enter the most recent arguments in case of ref or name update
 
   dependencies <- promote$dependencies
 
   if (!any(dependencies$importName == importName)) {
-    newRow <- data.frame(name = name, importName = importName, src = src, version = version, install = install, auth_token = auth_token, ref = ref)
+    newRow <- data.frame(name = name, importName = importName, src = src, version = version, install = install, auth_token = auth_token, ref = ref, subdir = subdir)
     dependencies <- rbind(dependencies, newRow)
     promote$dependencies <- dependencies
   } else {
     dependencies <- dependencies[importName != importName, ]
-    newRow <- data.frame(name = name, importName = importName, src = src, version = version, install = install, auth_token = auth_token, ref = ref)
+    newRow <- data.frame(name = name, importName = importName, src = src, version = version, install = install, auth_token = auth_token, ref = ref, subdir = subdir)
     dependencies <- rbind(dependencies, newRow)
     promote$dependencies <- dependencies
   }
